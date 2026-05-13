@@ -124,10 +124,10 @@ python skills/ppt-master/scripts/svg_to_pptx.py <project>
 **输入**：初稿 PPTX + Agent 2 配图提示词
 **动作**：
 1. 逐页审查配图需求，按类型分流：
-   - 意向照片/底图 → DuckDuckGo 搜真实图（不用 Unsplash，ID 不对应内容）
-   - 结构图 → DALL-E（api.apiyi.com/v1），限流时备选手绘 SVG（方案 B）
+   - 意向照片/底图 → cn.bing.com 搜真实图（首选），不可用时备选 DuckDuckGo
+   - 结构图 → DALL-E（api.apiyi.com/v1）
    - 数据图表 → matplotlib
-2. 输出配图清单表（每页：类型/来源/关键词）
+2. 输出配图清单表
 **关卡**：⚠️ 必须用户确认
 **铁律**：封面底图/实景照片禁止 AI 生成
 
@@ -140,12 +140,20 @@ python skills/ppt-master/scripts/svg_to_pptx.py <project>
 
 ### 6a. 实景照片搜索
 
-首选 DuckDuckGo（中文搜索稳定）：
+**首选 cn.bing.com**（无频率限制，中文匹配好）：
 
 ```bash
-pip install duckduckgo-search -q
+# browser_navigate 搜索"重庆 + 关键词"
+# browser_get_images 获取 URL
+# curl -x proxy 下载
+```
+
+**备选 DuckDuckGo**（cn.bing 不可用时。注意：ddgs 是免费网页抓取，无限流限制，不是付费 API。报"额度用完"说明短时间内请求太多，换 IP 或等几分钟即可）：
+
+```bash
+pip install ddgs -q
 python -c "
-from duckduckgo_search import DDGS
+from ddgs import DDGS
 with DDGS() as d: print(list(d.images('Chongqing Hongyadong night', max_results=5)))
 "
 ```
