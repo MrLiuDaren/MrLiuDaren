@@ -285,7 +285,7 @@ python skills/ppt-master/scripts/svg_to_pptx.py <project>
   1. 解析 SVG 中 `<!-- IMAGE_PLACEHOLDER: x=... y=... w=... h=... -->` 注释取坐标
   2. **删除占位框形状**：搜索 slide.shapes 中虚线 rect（`dash_style==4`）、"配图位"文字、浅底色块（`#F5F0EB`），逐个 `remove()`
   3. **裁剪适配**：用 PIL `crop_to_fit(img, target_w, target_h)` — 宽高比不匹配时裁宽或裁高，不拉伸变形
-  4. 按占位框坐标嵌入：`px_to_emu = lambda px: Emu(int(px) * 12700)`，`slide.shapes.add_picture(cropped_img, px_to_emu(x), px_to_emu(y), px_to_emu(w), px_to_emu(h))`
+  4. 按占位框坐标嵌入：`px_to_emu = lambda px: Emu(int(px) * 9525)`（1280px→13.333in=9525EMU/px，不是12700！），`slide.shapes.add_picture(cropped_img, px_to_emu(x), px_to_emu(y), px_to_emu(w), px_to_emu(h))`
 - **数据图表页**：同上替换
 
 ### 7c. 完成确认（强制）
