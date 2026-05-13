@@ -33,7 +33,7 @@ cp -r ppt-full-pipeline ~/AppData/Local/hermes/skills/productivity/
 
  Agent 5       Agent 6                       Agent 7
  配图规划  →   搜图生图+视觉验证   →   组装定稿+完成确认
- (Hermes)     (DuckDuckGo+Vision+DALL-E)    (python-pptx)
+ (Hermes)     (cn.bing+DuckDuckGo+Vision)   (python-pptx)
 ```
 
 **四个确认关卡**：Agent 2（文案）→ Agent 2.5（模板）→ Agent 5（配图）→ Agent 7（终稿）
@@ -83,8 +83,24 @@ cp -r ppt-full-pipeline ~/AppData/Local/hermes/skills/productivity/
 
 ## Agent 3：提示词细化（含图片占位——关键）
 
-**执行者**：PPT-Pro（加载 `ppt-pro` skill）
+**执行者**：PPT-Pro（加载 `ppt-pro` skill）**或 Hermes 直接批量生成 SVG**
+
 **输入**：Agent 2 文案 + Agent 2.5 模板 design_spec
+
+**路径 A — PPT-Pro 逐页细化**（标准路径）：
+1. 将每页文案转为 ppt-master SVG 生成指令，嵌入模板配色/字体/布局模式
+2. 图片占位规则见下文
+
+**路径 B — Hermes 直接批量生成 SVG**（快速路径，适用于 15+ 页项目）：
+当 ppt-master 的 Strategist 8 确认步骤过于繁琐时，可跳过 Strategist，用 Python 脚本按模板 design_spec 直接批量生成所有 SVG 页面。步骤：
+1. 从模板的 `design_spec.md` 和 `svg-patterns.md` 提取配色/字体/页面类型模板
+2. 写 Python 脚本，用 f-string 填充文案到 SVG 模板
+3. 批量输出到 `svg_output/` 目录
+4. 跑 `finalize_svg.py` + `svg_to_pptx.py` 转换
+5. 之后走 Agent 7 嵌图
+
+每个 SVG 类型的关键参数见对应模板的 `svg-patterns.md`。
+**内容页卡片布局要求**：见 [`references/card-layout-pattern.md`](references/card-layout-pattern.md) —— 独立卡片、内容密度、字体规格、XML 转义。
 **动作**：
 1. 将每页文案转为 ppt-master SVG 生成指令，嵌入模板配色/字体/布局模式
 2. **图片占位（必须）**：读 Agent 2 的 `【配图】` 标签，按以下规则在 SVG 中预留空间：
@@ -107,13 +123,53 @@ cp -r ppt-full-pipeline ~/AppData/Local/hermes/skills/productivity/
 ## Agent 4：PPT 生成
 
 **执行者**：PPT-Master
-**输入**：Agent 3 的 SVG 指令
-**命令**：
+**输入**：Agent 2 文案 + Agent 2.5 模板 design_spec
+
+### 路径 A：直接 SVG 批量生成（推荐，跳过 Strategist）
+
+当设计规范明确（模板已选定），直接写 Python 脚本生成 SVG 更快：
 ```bash
-cd ppt-master/
+# 1. 生成 SVG（一个脚本输出全部页面）
+python projects/<project>/gen_svgs.py
+
+# 2. 转换
 python skills/ppt-master/scripts/finalize_svg.py <project>
 python skills/ppt-master/scripts/svg_to_pptx.py <project>
 ```
+
+SVG 页面类型及尺寸（1280×720px）：
+| 页面类型 | 背景色 | 关键元素 |
+|----------|--------|---------|
+| 封面 | 渐变 `url(#cg)` | 标题36-48pt居中 + 底部5卡片 + 4px顶部色条 |
+| 目录 | 渐变 + 左侧8px色条 | 编号+标题+副标题，每行120px间距 |
+| 章节页 | 渐变 + 大号淡化数字(400pt opacity 0.05) | 编号72pt + 标题48pt + 3卡片 |
+| 内容页 | 暖白 `#FFFAF5` | 顶部导航条(56px) + 卡片(左金色竖线6px) + 注释11pt |
+| 封底 | 渐变 | 祝福语42pt居中 + 金色横线分隔 |
+
+**内容页导航条规范（用户硬性要求）**：
+- 顶部4px主色线
+- 56px高白色条：左→项目名(14pt主色) | 分隔线 | 章节路径(14pt金色)  /  右→页码
+- 下方1px灰色分隔线
+
+**红金政务风配色（老干局/党委汇报）**：
+```python
+'primary': '#B71C1C', 'accent': '#D4A017', 'bg': '#FFFAF5'
+'text': '#2C1810', 'text2': '#8B7355'
+# 渐变：B71C1C → 6D0000
+```
+
+### 路径 B：Strategist（8 确认，适合无预设模板的项目）
+
+```bash
+cd ppt-master/
+python skills/ppt-master/scripts/source_to_md/doc_to_md.py <source.docx>
+python skills/ppt-master/scripts/project_manager.py init <name> --format ppt169
+python skills/ppt-master/scripts/project_manager.py import-sources <project> <source.md> --move
+# → Strategist 8 confirmations
+python skills/ppt-master/scripts/finalize_svg.py <project>
+python skills/ppt-master/scripts/svg_to_pptx.py <project>
+```
+
 **输出**：初稿 PPTX（含图片占位）
 
 ---
@@ -142,10 +198,21 @@ python skills/ppt-master/scripts/svg_to_pptx.py <project>
 
 **首选 cn.bing.com**（无频率限制，中文匹配好）：
 
+注意：`browser_navigate` 到 cn.bing 可能因编码问题失败（UTF-8 解码错误），此时用 `terminal(curl)` 或 `execute_code` 替代浏览器搜索。`browser_get_images` 也可能报 `SyntaxError`。
+
+备选方法 1 — ddgs（Python 库，稳定可用）：
+```python
+# pip install ddgs -q
+from ddgs import DDGS
+with DDGS() as d:
+    results = list(d.images('Chongqing city skyline Raffles City', max_results=3))
+    for r in results:
+        print(r['image'])  # direct image URL
+```
+
+备选方法 2 — terminal curl 直接搜 Bing：
 ```bash
-# browser_navigate 搜索"重庆 + 关键词"
-# browser_get_images 获取 URL
-# curl -x proxy 下载
+curl -x http://127.0.0.1:7890 -sL "https://cn.bing.com/images/search?q=URLENCODED_QUERY" -A "Mozilla/5.0" | python -c "import sys,re; html=sys.stdin.read(); urls=re.findall(r'murl&quot;:&quot;(https?://[^&]+)&quot;', html); print('\n'.join(urls[:5]))"
 ```
 
 **备选 DuckDuckGo**（cn.bing 不可用时。注意：ddgs 是免费网页抓取，无限流限制，不是付费 API。报"额度用完"说明短时间内请求太多，换 IP 或等几分钟即可）：
@@ -158,7 +225,9 @@ with DDGS() as d: print(list(d.images('Chongqing Hongyadong night', max_results=
 "
 ```
 
-### 6b. 下载 + 视觉验证（强制关卡——每张必验）
+### 6b. 下载 + 视觉验证（强制关卡——每张必验，含无水印检查）
+
+**水印铁律**：有水印/Logo/版权标识的图片一律不可用。验证时必须检查画面四角+中央是否有文字覆盖、半透明Logo、gettyimages/shutterstock署名等。发现水印立即删除重搜。
 
 1. `curl -x http://127.0.0.1:7890` 逐张下载
 2. `file *.jpg` 验证是 JPEG 非 HTML
@@ -205,7 +274,13 @@ python skills/ppt-master/scripts/svg_to_pptx.py <project>
 ### 7b. 嵌入图片
 用 python-pptx 的 `slide.shapes.add_picture()` 嵌入，填入 Agent 3 预留的位置：
 
-- **全幅背景页**：`add_picture(0, 0, Inches(13.33))` + 调整图片置于底层
+- **全幅背景页**：`add_picture(0, 0, prs.slide_width, prs.slide_height)` + 将图片移至底层 z-order：
+  ```python
+  pic = slide.shapes.add_picture(img_path, Inches(0), Inches(0), prs.slide_width, prs.slide_height)
+  sp = pic._element
+  sp.getparent().remove(sp)
+  slide.shapes._spTree.insert(2, sp)  # 插入到树的最前面 = 最底层
+  ```
 - **侧栏插图页**：读虚线占位框坐标 → `add_picture(x, y, Inches(w/72), Inches(h/72))`
 - **数据图表页**：同上替换
 
@@ -223,7 +298,7 @@ python skills/ppt-master/scripts/svg_to_pptx.py <project>
 |------|------|
 | 文案 | 严格从原文提取，不增不减 |
 | 标题 | 每个一二标题必须对应 PPT 页面 |
-| 卡片递进 | 上页卡片要点 = 下页概括总起 |
+| 卡片递进 | 上页卡片要点 = 下页概括总起 | 卡片渲染 | **每个要点=独立视觉卡片**（独立`<g>`+圆角白底+金色左条），每卡≥4行原文，字体≥14pt，**严禁所有要点挤一个框** |
 | 配图 | 只给内容相关的页配图，不对应的宁可留白 |
 | 封面底图 | 必须搜索真实照片，禁止 AI 生成 |
 | 关卡 | 四个用户确认点不可跳过 |
@@ -234,12 +309,18 @@ python skills/ppt-master/scripts/svg_to_pptx.py <project>
 
 | 陷阱 | 现象 | 对策 |
 |------|------|------|
-| **SVG `<image>` 在 `<rect>` 前面** | 封面/内容页有图但被不透明色块完全盖住 | `<image>` 必须放在背景 `<rect>` **后面**；全幅背景 rect 加 `opacity=\"0.65\"`。详见 `references/svg-image-lessons.md` |
-| `browser_navigate` + 中文 URL | `'utf-8' codec can't decode byte 0xb2` | 用 `curl -x proxy` 下载；中文搜索用 DuckDuckGo |
+| **SVG `<image>` 在 `<rect>` 前面** | 封面/内容页有图但被不透明色块完全盖住 | `<image>` 必须放在背景 `<rect>` **后面**；全幅背景 rect 加 `opacity="0.65"` |
+| **`cell.text = ''` 产生空 run** | python-docx 表格字体检测失败，`runs[0]` 是空 run | 用 `cell.paragraphs[0].clear()` 替代 `cell.text = ''`；或检测 `run.text.strip()` 跳过空 run |
+| **`read_file` + `write_file` 污染 SVG** | `svg_to_pptx` 报 `syntax error: line 1, column 5`，文件以空格开头 | **禁止**用 `read_file`/`write_file` 编辑 SVG。用 `terminal` + Python `open()`。详见 `references/file-io-pitfalls.md` |
+| 未验证图片直接使用 | | |
+| DuckDuckGo 报"额度用完" | ddgs 限流 | ddgs 是免费网页抓取，非付费 API。等几分钟或换 IP 即可。首选 cn.bing.com 无频率限制 |
 | Unsplash URL 图不对题 | 视觉验证出故宫/西班牙/新加坡而非重庆 | 视觉模型逐张验证后再用；不可跳过 |
 | `read_file`→`write_file` 编辑 SVG | XML 损坏（行号前缀 `     1\|` 污染文件头） | **禁止用 hermes_tools 的 read_file/write_file 编辑 SVG**；必须用 Python `open()` 直接读写 |
 | AI 生图并行调用 | 429 rate limit | 必须串行调用 |
-| 图片嵌入报 PIL 错误 | `UnidentifiedImageError` | `file *.jpg` 验证；损坏文件换有效源 |
+| **内容页单一大框（非卡片）** | 所有条目挤在一个大白框里，无独立卡片 | 每个条目必须是独立 `<g filter="url(#cs)">` + `<path fill="#FFFFFF">` + 金色左条。**禁止**用一个 `<g>` 包裹全部 `<text>`。见 `references/card-layout-pattern.md` |
+| **卡片内容单薄** | 每卡仅 1 行概括，投影后空洞 | 每卡至少 3-4 行实质性文字，**从原始 DOCX 提取**，不自编不精简。见 `references/card-layout-pattern.md` 内容密度铁律 |
+| **卡片字体太小** | 13pt 正文投影完全看不清 | 卡片标签 ≥16pt bold，卡片正文 ≥14pt。注释 11pt 例外 |
+| **SVG 中 `<` 未转义** | `svg_to_pptx` 报 `not well-formed (invalid token)` | 所有 XML 特殊字符转义：`<` → `&lt;`，`>` → `&gt;`，`&` → `&amp;` |
 | API key 截断/失效 | 401 无效令牌 | 用 `memory replace` 更新完整 key |
 
 ---
