@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="navGrad" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="0.53" stop-color="#2F5597"/><stop offset="1" stop-color="#4874CB" stop-opacity="0.58"/>
+    </linearGradient>
+    <linearGradient id="pgGrad" x1="-0.1" y1="0.28" x2="1.1" y2="0.72">
+      <stop offset="0" stop-color="#034581"/><stop offset="1" stop-color="#6CAFEF"/>
+    </linearGradient>
+    <linearGradient id="barGrad" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="0.02" stop-color="#2F5597" stop-opacity="0.79"/><stop offset="0.75" stop-color="#2F5597"/><stop offset="1" stop-color="#2F5597" stop-opacity="0.79"/>
+    </linearGradient>
+    <filter id="cardGlow" x="-5%" y="-5%" width="110%" height="110%">
+      <feMorphology operator="dilate" radius="3" in="SourceAlpha" result="dilated"/>
+      <feGaussianBlur in="dilated" stdDeviation="7" result="blurred"/>
+      <feFlood flood-color="#1764FC" flood-opacity="0.2" result="flood"/>
+      <feComposite in="flood" in2="blurred" operator="in" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="boxShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="3" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <!-- 满版深蓝背景 -->
+  <rect x="0" y="-6" width="1280" height="725" fill="#2F5597"/>
+  <!-- 白色内容卡片 -->
+  <rect x="29" y="52" width="1221" height="614" fill="#FFFFFF" filter="url(#cardGlow)"/>
+  <!-- 顶部导航条 -->
+  <rect x="0" y="0" width="1280" height="69" fill="url(#navGrad)"/>
+  <polygon points="3,0 54,0 15,80 -37,80" fill="#034581"/>
+  <polygon points="44,9 84,9 54,71 14,71" fill="url(#pgGrad)"/>
+  <text x="77" y="45" font-family="微软雅黑, SimHei, sans-serif" font-size="37" fill="#FFFFFF" font-weight="bold">工作背景与组织架构</text>
+  <!-- 引文条 -->
+  <rect x="55" y="75" width="1171" height="95" fill="#2F5597" fill-opacity="0.17"/>
+  <text x="65" y="105" font-family="微软雅黑, SimHei, sans-serif" font-size="29" fill="#1F4D92" font-weight="bold">按照领导批示要求，迅速组建现场办公团队开展融合办公。</text>
+  <!-- 子标题 -->
+  <rect x="55" y="187" width="590" height="51" fill="#05497F" filter="url(#boxShadow)"/>
+  <text x="350" y="219" font-family="微软雅黑, SimHei, sans-serif" font-size="24" fill="#FFFFFF" font-weight="bold" text-anchor="middle">组建融合办公工作组</text>
+  <!-- 圆形节点 -->
+  <ellipse cx="91" cy="326" rx="55" ry="55" fill="#1D5689" fill-opacity="0.1"/>
+  <text x="91" y="316" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="21" fill="#4264A0" font-weight="bold">抽调</text>
+  <text x="91" y="342" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="21" fill="#4264A0" font-weight="bold">专人</text>
+  <!-- 牵头部门卡片 -->
+  <rect x="141" y="408" width="504" height="42" fill="#FFFFFF" stroke="#3D68BF" stroke-width="1.3" filter="url(#boxShadow)"/>
+  <text x="393" y="434" font-family="微软雅黑, sans-serif" font-size="21" fill="#4264A0" font-weight="bold" text-anchor="middle">市专班办抽调组建</text>
+  <!-- 部门竖排卡片 -->
+  <rect x="55" y="408" width="73" height="187" fill="#FFFFFF" stroke="#3D68BF" stroke-width="1.3" filter="url(#boxShadow)"/>
+  <text x="91" y="468" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="21" fill="#4264A0" font-weight="bold">市</text>
+  <text x="91" y="494" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="21" fill="#4264A0" font-weight="bold">城</text>
+  <text x="91" y="520" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="21" fill="#4264A0" font-weight="bold">治</text>
+  <text x="91" y="546" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="21" fill="#4264A0" font-weight="bold">办</text>
+  <!-- 参与部门卡片行 -->
+  <rect x="141" y="461" width="73" height="135" fill="#FFFFFF" stroke="#3D68BF" stroke-width="1.3" filter="url(#boxShadow)"/>
+  <text x="178" y="499" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">市</text><text x="178" y="522" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">规</text><text x="178" y="545" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">资</text><text x="178" y="568" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">局</text>
+  <rect x="227" y="461" width="73" height="135" fill="#FFFFFF" stroke="#3D68BF" stroke-width="1.3" filter="url(#boxShadow)"/>
+  <text x="264" y="499" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">市</text><text x="264" y="522" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">公</text><text x="264" y="545" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">安</text><text x="264" y="568" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">局</text>
+  <rect x="314" y="461" width="73" height="135" fill="#FFFFFF" stroke="#3D68BF" stroke-width="1.3" filter="url(#boxShadow)"/>
+  <text x="350" y="499" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">两</text><text x="350" y="522" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">江</text><text x="350" y="545" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">新</text><text x="350" y="568" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">区</text>
+  <rect x="400" y="461" width="73" height="135" fill="#FFFFFF" stroke="#3D68BF" stroke-width="1.3" filter="url(#boxShadow)"/>
+  <text x="437" y="499" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">大</text><text x="437" y="522" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">渡</text><text x="437" y="545" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">口</text><text x="437" y="568" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">区</text>
+  <rect x="486" y="461" width="73" height="135" fill="#FFFFFF" stroke="#3D68BF" stroke-width="1.3" filter="url(#boxShadow)"/>
+  <text x="523" y="499" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">沙</text><text x="523" y="522" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">坪</text><text x="523" y="545" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">坝</text><text x="523" y="568" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">区</text>
+  <rect x="572" y="461" width="73" height="135" fill="#FFFFFF" stroke="#3D68BF" stroke-width="1.3" filter="url(#boxShadow)"/>
+  <text x="609" y="510" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">数字</text><text x="609" y="533" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">资源</text><text x="609" y="556" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">集团</text>
+  <!-- 人员编制行 -->
+  <rect x="55" y="605" width="73" height="31" fill="#FFFFFF" stroke="#3D68BF" stroke-width="1.3" filter="url(#boxShadow)"/>
+  <text x="91" y="625" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">5人</text>
+  <rect x="138" y="605" width="507" height="31" fill="#FFFFFF" stroke="#3D68BF" stroke-width="1.3" filter="url(#boxShadow)"/>
+  <text x="392" y="625" text-anchor="middle" font-family="微软雅黑, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">6人</text>
+</svg>

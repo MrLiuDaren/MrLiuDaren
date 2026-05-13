@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="secGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A5F"/><stop offset="100%" stop-color="#2E5A8B"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="1280" height="720" fill="url(#secGrad)"/>
+  <text x="1100" y="500" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="400" font-weight="700" fill="#FFFFFF" fill-opacity="0.05" text-anchor="middle">03</text>
+  <rect x="80" y="260" width="6" height="120" fill="#4A90D9"/>
+  <text x="120" y="310" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="72" font-weight="700" fill="#FFFFFF">03</text>
+  <text x="280" y="310" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="48" font-weight="700" fill="#FFFFFF">评价因子体系</text>
+  <text x="120" y="380" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="18" fill="#FFFFFF" fill-opacity="0.8">
+    <tspan x="120" dy="0">8大类49项 → 18项可量化因子 → 5级赋分 → 8步评估闭环</tspan>
+    <tspan x="120" dy="30">实现从「定性判断」到「定量评价」的方法论跨越</tspan>
+    <tspan x="120" dy="30">4项安全因子★一票否决 · 三线差异化权重</tspan>
+  </text>
+  <g><rect x="120" y="490" width="230" height="80" rx="8" fill="#FFFFFF" fill-opacity="0.1"/><text x="235" y="525" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#FFFFFF" fill-opacity="0.7" text-anchor="middle">定量因子</text><text x="235" y="555" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF" text-anchor="middle">18项</text></g>
+  <g><rect x="370" y="490" width="230" height="80" rx="8" fill="#FFFFFF" fill-opacity="0.1"/><text x="485" y="525" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#FFFFFF" fill-opacity="0.7" text-anchor="middle">大类维度</text><text x="485" y="555" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="24" font-weight="700" fill="#2ECC71" text-anchor="middle">5大类</text></g>
+  <g><rect x="620" y="490" width="230" height="80" rx="8" fill="#FFFFFF" fill-opacity="0.1"/><text x="735" y="525" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#FFFFFF" fill-opacity="0.7" text-anchor="middle">赋分等级</text><text x="735" y="555" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF" text-anchor="middle">5级</text></g>
+  <text x="640" y="680" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#FFFFFF" fill-opacity="0.5" text-anchor="middle">10</text>
+</svg>

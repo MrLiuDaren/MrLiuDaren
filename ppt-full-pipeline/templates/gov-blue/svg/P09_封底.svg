@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="endGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1E3A5F"/><stop offset="100%" stop-color="#2E5A8B"/>
+    </linearGradient>
+    <linearGradient id="navGrad" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="0.53" stop-color="#2F5597"/><stop offset="1" stop-color="#4874CB" stop-opacity="0.58"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="1280" height="720" fill="url(#endGrad)"/>
+  <!-- 顶部导航条 -->
+  <rect x="0" y="0" width="1280" height="69" fill="url(#navGrad)"/>
+  <polygon points="3,0 54,0 15,80 -37,80" fill="#034581"/>
+  <polygon points="44,9 84,9 54,71 14,71" fill="url(#navGrad)"/>
+  <text x="77" y="45" font-family="微软雅黑, SimHei, sans-serif" font-size="32" fill="#FFFFFF" font-weight="bold">汇报完毕 · 敬请指导</text>
+  <!-- 中央内容 -->
+  <rect x="140" y="200" width="1000" height="320" rx="12" fill="#FFFFFF" fill-opacity="0.08"/>
+  <text x="640" y="270" font-family="微软雅黑, SimHei, sans-serif" font-size="42" fill="#FFFFFF" font-weight="bold" text-anchor="middle">市城市治理办</text>
+  <text x="640" y="325" font-family="微软雅黑, SimHei, sans-serif" font-size="28" fill="#FFFFFF" fill-opacity="0.8" text-anchor="middle">关于融合办公工作进展情况的汇报</text>
+  <rect x="540" y="350" width="200" height="2" fill="#4874CB"/>
+  <text x="640" y="410" font-family="微软雅黑, SimHei, sans-serif" font-size="22" fill="#FFFFFF" fill-opacity="0.7" text-anchor="middle">推动城市治理从"经验判断"向"数据驱动"转变</text>
+  <text x="640" y="450" font-family="微软雅黑, SimHei, sans-serif" font-size="22" fill="#FFFFFF" fill-opacity="0.7" text-anchor="middle">实现"早发现、早预警、早处置"</text>
+  <!-- 底部 -->
+  <text x="640" y="560" font-family="方正楷体_GBK, KaiTi, SimHei, 微软雅黑, sans-serif" font-size="32" fill="#FFFFFF" fill-opacity="0.6" text-anchor="middle">2026年5月</text>
+  <text x="640" y="680" font-family="微软雅黑, sans-serif" font-size="12" fill="#FFFFFF" fill-opacity="0.4" text-anchor="middle">9 / 9</text>
+  <rect x="0" y="716" width="1280" height="4" fill="#4874CB"/>
+</svg>

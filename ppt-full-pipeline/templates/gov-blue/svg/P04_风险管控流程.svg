@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="navGrad" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="0.53" stop-color="#2F5597"/><stop offset="1" stop-color="#4874CB" stop-opacity="0.58"/>
+    </linearGradient>
+    <linearGradient id="pgGrad" x1="-0.1" y1="0.28" x2="1.1" y2="0.72">
+      <stop offset="0" stop-color="#034581"/><stop offset="1" stop-color="#6CAFEF"/>
+    </linearGradient>
+    <linearGradient id="barGrad" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="0.02" stop-color="#2F5597" stop-opacity="0.79"/><stop offset="0.75" stop-color="#2F5597"/><stop offset="1" stop-color="#2F5597" stop-opacity="0.79"/>
+    </linearGradient>
+    <linearGradient id="cardBg" x1="0.5" y1="1" x2="0.5" y2="0">
+      <stop offset="0" stop-color="#0676FE" stop-opacity="0.18"/><stop offset="1" stop-color="#0162D7" stop-opacity="0.07"/>
+    </linearGradient>
+    <filter id="cardGlow" x="-5%" y="-5%" width="110%" height="110%">
+      <feMorphology operator="dilate" radius="3" in="SourceAlpha" result="dilated"/>
+      <feGaussianBlur in="dilated" stdDeviation="7" result="blurred"/>
+      <feFlood flood-color="#1764FC" flood-opacity="0.2" result="flood"/>
+      <feComposite in="flood" in2="blurred" operator="in" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="13" stdDeviation="22" flood-color="#0162D7" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <rect x="0" y="-6" width="1280" height="725" fill="#2F5597"/>
+  <rect x="29" y="52" width="1221" height="614" fill="#FFFFFF" filter="url(#cardGlow)"/>
+  <rect x="0" y="0" width="1280" height="69" fill="url(#navGrad)"/>
+  <polygon points="3,0 54,0 15,80 -37,80" fill="#034581"/>
+  <polygon points="44,9 84,9 54,71 14,71" fill="url(#pgGrad)"/>
+  <text x="77" y="45" font-family="微软雅黑, SimHei, sans-serif" font-size="37" fill="#FFFFFF" font-weight="bold">一、着力推动风险点规范管控</text>
+  <!-- 子标题 -->
+  <rect x="18" y="148" width="1256" height="51" rx="4" fill="url(#barGrad)"/>
+  <text x="55" y="185" font-family="微软雅黑, SimHei, sans-serif" font-size="32" fill="#FFFFFF" font-weight="bold">（二）风险识别与分级管控</text>
+  <!-- 三层卡片结构 -->
+  <rect x="30" y="220" width="1220" height="114" rx="9" fill="url(#cardBg)"/>
+  <rect x="38" y="247" width="223" height="61" rx="10" fill="#2E54A1" filter="url(#cardShadow)"/>
+  <text x="150" y="270" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="21" fill="#FFFFFF" font-weight="bold">风险识别</text>
+  <text x="150" y="296" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="21" fill="#FFFFFF" font-weight="bold">全量排查</text>
+  <rect x="300" y="260" width="134" height="57" rx="10" fill="#FFFFFF" stroke-dasharray="4 4"/>
+  <text x="367" y="293" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#2F5597" font-weight="bold">DLEC建模</text>
+  <rect x="470" y="260" width="134" height="57" rx="10" fill="#FFFFFF" stroke-dasharray="4 4"/>
+  <text x="537" y="293" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#2F5597" font-weight="bold">风险定级</text>
+  <rect x="640" y="260" width="134" height="57" rx="10" fill="#FFFFFF" stroke-dasharray="4 4"/>
+  <text x="707" y="293" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#2F5597" font-weight="bold">分级管控</text>
+  <rect x="810" y="260" width="134" height="57" rx="10" fill="#FFFFFF" stroke-dasharray="4 4"/>
+  <text x="877" y="293" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#2F5597" font-weight="bold">动态监测</text>
+  <rect x="980" y="260" width="134" height="57" rx="10" fill="#FFFFFF" stroke-dasharray="4 4"/>
+  <text x="1047" y="293" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#2F5597" font-weight="bold">闭环处置</text>
+  <!-- 第二层 -->
+  <rect x="30" y="355" width="1220" height="76" rx="6" fill="url(#cardBg)"/>
+  <rect x="38" y="362" width="226" height="61" rx="10" fill="#2E54A1" filter="url(#cardShadow)"/>
+  <text x="151" y="385" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="21" fill="#FFFFFF" font-weight="bold">分级处置</text>
+  <text x="151" y="411" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="21" fill="#FFFFFF" font-weight="bold">分类施策</text>
+  <rect x="300" y="375" width="134" height="57" rx="10" fill="#FFFFFF" stroke-dasharray="4 4"/>
+  <text x="367" y="408" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#2F5597" font-weight="bold">Ⅰ级红色</text>
+  <rect x="470" y="375" width="134" height="57" rx="10" fill="#FFFFFF" stroke-dasharray="4 4"/>
+  <text x="537" y="408" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#2F5597" font-weight="bold">Ⅱ级橙色</text>
+  <rect x="640" y="375" width="134" height="57" rx="10" fill="#FFFFFF" stroke-dasharray="4 4"/>
+  <text x="707" y="408" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#2F5597" font-weight="bold">Ⅲ级黄色</text>
+  <rect x="810" y="375" width="134" height="57" rx="10" fill="#FFFFFF" stroke-dasharray="4 4"/>
+  <text x="877" y="408" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#2F5597" font-weight="bold">Ⅳ级蓝色</text>
+  <!-- 第三层 -->
+  <rect x="30" y="450" width="1220" height="76" rx="6" fill="url(#cardBg)"/>
+  <rect x="38" y="457" width="226" height="61" rx="10" fill="#2E54A1" filter="url(#cardShadow)"/>
+  <text x="151" y="480" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="21" fill="#FFFFFF" font-weight="bold">长效治理</text>
+  <text x="151" y="506" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="21" fill="#FFFFFF" font-weight="bold">机制建设</text>
+  <rect x="300" y="470" width="134" height="57" rx="10" fill="#FFFFFF" stroke-dasharray="4 4"/>
+  <text x="367" y="503" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#2F5597" font-weight="bold">定期巡检</text>
+  <rect x="470" y="470" width="134" height="57" rx="10" fill="#FFFFFF" stroke-dasharray="4 4"/>
+  <text x="537" y="503" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#2F5597" font-weight="bold">数据更新</text>
+  <rect x="640" y="470" width="134" height="57" rx="10" fill="#FFFFFF" stroke-dasharray="4 4"/>
+  <text x="707" y="503" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#2F5597" font-weight="bold">应急演练</text>
+  <rect x="810" y="470" width="134" height="57" rx="10" fill="#FFFFFF" stroke-dasharray="4 4"/>
+  <text x="877" y="503" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#2F5597" font-weight="bold">考核评估</text>
+  <!-- 箭头 -->
+  <rect x="262" y="275" width="25" height="23" fill="#4874CB" fill-opacity="0.6"/>
+  <rect x="432" y="275" width="25" height="23" fill="#4874CB" fill-opacity="0.6"/>
+  <rect x="602" y="275" width="25" height="23" fill="#4874CB" fill-opacity="0.6"/>
+  <rect x="772" y="275" width="25" height="23" fill="#4874CB" fill-opacity="0.6"/>
+  <rect x="942" y="275" width="25" height="23" fill="#4874CB" fill-opacity="0.6"/>
+  <!-- 底部结论条 -->
+  <rect x="24" y="605" width="1210" height="59" rx="10" fill="#2F5597"/>
+  <text x="630" y="639" font-family="微软雅黑, SimHei, sans-serif" font-size="24" fill="#FFFFFF" font-weight="bold" text-anchor="middle">建立"识别—定级—处置—监测—闭环"全流程风险管控体系</text>
+</svg>

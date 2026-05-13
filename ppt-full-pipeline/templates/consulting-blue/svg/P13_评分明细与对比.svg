@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <defs>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="2"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.1"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="1280" height="720" fill="#F8FAFC"/>
+  <rect x="0" y="0" width="1280" height="4" fill="#1E3A5F"/>
+  <rect x="0" y="4" width="1280" height="56" fill="#FFFFFF"/>
+  <text x="60" y="38" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="14" fill="#1E3A5F" font-weight="600">沙坪坝区道路精细化提质</text>
+  <rect x="260" y="22" width="1" height="20" fill="#E2E8F0"/>
+  <text x="280" y="38" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#4A90D9">03 评价因子体系</text>
+  <text x="1220" y="38" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#64748B" text-anchor="end">13 / 20</text>
+  <rect x="0" y="60" width="1280" height="1" fill="#E2E8F0"/>
+  <text x="60" y="105" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="28" font-weight="700" fill="#1E3A5F">3.6 各道路评分明细 &amp; 3.7 综合对比分析</text>
+
+  <g filter="url(#cardShadow)"><rect x="60" y="140" width="750" height="340" rx="8" fill="#FFFFFF"/><rect x="60" y="140" width="4" height="340" rx="2" fill="#4A90D9"/>
+    <text x="85" y="175" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="16" font-weight="600" fill="#1E3A5F">9条道路评分明细</text>
+    <rect x="85" y="190" width="700" height="270" rx="4" fill="#F8FAFC"/>
+    <text x="95" y="212" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748B">道路<text dx="55"/>路线<text dx="30"/>问题<text dx="25"/>S<text dx="23"/>等级<text dx="7"/>A<text dx="10"/>B<text dx="10"/>C<text dx="10"/>D</text>
+    <rect x="90" y="218" width="690" height="1" fill="#E2E8F0"/>
+    <text x="95" y="238" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#2ECC71">沙滨路<tspan dx="20" fill="#334155">滨江风貌线</tspan><tspan dx="20" fill="#334155">32</tspan><tspan dx="22" fill="#2ECC71" font-weight="700">69.7</tspan><tspan dx="13" fill="#2ECC71">合格</tspan><tspan dx="5" fill="#334155">75.5</tspan><tspan dx="5">82.0</tspan><tspan dx="5">52.5</tspan><tspan dx="5">50.0</tspan></text>
+    <text x="95" y="255" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#F59E0B">经纬大道<tspan dx="20" fill="#334155">交通主干线</tspan><tspan dx="10" fill="#334155">154</tspan><tspan dx="22" fill="#F59E0B" font-weight="700">65.1</tspan><tspan dx="13" fill="#F59E0B">合格</tspan><tspan dx="5" fill="#334155">68.1</tspan><tspan dx="5">82.3</tspan><tspan dx="5">40.3</tspan><tspan dx="5">55.7</tspan></text>
+    <text x="95" y="272" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#F59E0B">科学大道<tspan dx="20" fill="#334155">交通主干线</tspan><tspan dx="15" fill="#334155">180</tspan><tspan dx="22" fill="#F59E0B" font-weight="700">64.9</tspan><tspan dx="13" fill="#F59E0B">合格</tspan><tspan dx="5" fill="#334155">68.9</tspan><tspan dx="5">79.7</tspan><tspan dx="5">40.7</tspan><tspan dx="5">53.3</tspan></text>
+    <text x="95" y="289" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#E63946">龙泉路<tspan dx="20" fill="#334155">商圈生活线</tspan><tspan dx="22" fill="#334155">11</tspan><tspan dx="22" fill="#E63946" font-weight="700">54.5</tspan><tspan dx="13" fill="#E63946">待整改</tspan><tspan dx="5" fill="#334155">53.0</tspan><tspan dx="5">53.5</tspan><tspan dx="5">30.8</tspan><tspan dx="5">43.5</tspan></text>
+    <text x="95" y="306" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#E63946">站东路<tspan dx="20" fill="#334155">商圈生活线</tspan><tspan dx="22" fill="#334155">71</tspan><tspan dx="22" fill="#E63946" font-weight="700">54.1</tspan><tspan dx="13" fill="#E63946">待整改</tspan><tspan dx="5" fill="#334155">52.7</tspan><tspan dx="5">52.9</tspan><tspan dx="5">30.5</tspan><tspan dx="5">43.3</tspan></text>
+    <text x="95" y="323" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#E63946">石小路<tspan dx="20" fill="#334155">商圈生活线</tspan><tspan dx="15" fill="#334155">198</tspan><tspan dx="22" fill="#E63946" font-weight="700">53.3</tspan><tspan dx="13" fill="#E63946">待整改</tspan><tspan dx="5" fill="#334155">51.9</tspan><tspan dx="5">51.7</tspan><tspan dx="5">30.1</tspan><tspan dx="5">43.0</tspan></text>
+    <text x="95" y="340" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#E63946">天陈路<tspan dx="20" fill="#334155">商圈生活线</tspan><tspan dx="15" fill="#334155">240</tspan><tspan dx="22" fill="#E63946" font-weight="700">53.1</tspan><tspan dx="13" fill="#E63946">待整改</tspan><tspan dx="5" fill="#334155">51.5</tspan><tspan dx="5">52.3</tspan><tspan dx="5">30.3</tspan><tspan dx="5">42.7</tspan></text>
+    <text x="95" y="357" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#E63946">小龙坎新街<tspan dx="5" fill="#334155">商圈生活线</tspan><tspan dx="10" fill="#334155">387</tspan><tspan dx="22" fill="#E63946" font-weight="700">52.1</tspan><tspan dx="13" fill="#E63946">待整改</tspan><tspan dx="5" fill="#334155">51.8</tspan><tspan dx="5">52.3</tspan><tspan dx="5">28.1</tspan><tspan dx="5">42.5</tspan></text>
+    <text x="95" y="374" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#E63946">汉渝路<tspan dx="20" fill="#334155">商圈生活线</tspan><tspan dx="15" fill="#334155">491</tspan><tspan dx="22" fill="#E63946" font-weight="700">51.4</tspan><tspan dx="13" fill="#E63946">待整改</tspan><tspan dx="5" fill="#334155">51.1</tspan><tspan dx="5">52.3</tspan><tspan dx="5">30.1</tspan><tspan dx="5">40.0</tspan></text>
+  </g>
+
+  <g filter="url(#cardShadow)"><rect x="830" y="140" width="390" height="340" rx="8" fill="#FFFFFF"/><rect x="830" y="140" width="4" height="340" rx="2" fill="#2D6A4F"/>
+    <text x="855" y="175" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="16" font-weight="600" fill="#1E3A5F">五大核心结论</text>
+    <rect x="855" y="195" width="340" height="60" rx="4" fill="#FEE2E2"/>
+    <text x="870" y="220" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="13" font-weight="600" fill="#E63946">1 重建设 · 轻管理</text>
+    <text x="870" y="240" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#64748B">A类均&gt;50分 · C/D全面偏低</text>
+    <rect x="855" y="265" width="340" height="60" rx="4" fill="#FEE2E2"/>
+    <text x="870" y="290" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="600" fill="#E63946">2 商圈生活线是牛鼻子</text>
+    <text x="870" y="310" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#64748B">唯一待整改 · S=53.1 · 占79.3%</text>
+    <rect x="855" y="335" width="340" height="60" rx="4" fill="#FEF3E2"/>
+    <text x="870" y="360" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="600" fill="#F59E0B">3 停车是三条线共性问题</text>
+    <text x="870" y="380" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#64748B">D1全线0-0.3分 · 396项占22.4%</text>
+    <rect x="855" y="405" width="340" height="60" rx="4" fill="#ECF8F0"/>
+    <text x="870" y="430" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="600" fill="#2D6A4F">4 滨江线 附属设施最优</text>
+    <text x="870" y="450" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#64748B">B类82 ≈ 跨区81 &gt;&gt; 商圈52.5</text>
+  </g>
+
+  <rect x="60" y="500" width="1160" height="60" rx="8" fill="#1E3A5F"/>
+  <text x="640" y="535" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">合格3条 · 待整改6条  |  商圈6路全部&lt;60  |  汉渝路51.4全线最低 · 沙滨路69.7全线最高</text>
+  <text x="60" y="700" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="11" fill="#94A3B8">数据来源：第三章评分计算 · E类暂按满分处理（不代表实际良好，需专项巡查补全）</text>
+</svg>

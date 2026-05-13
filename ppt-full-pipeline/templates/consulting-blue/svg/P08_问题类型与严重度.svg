@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <defs>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="2"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.1"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="1280" height="720" fill="#F8FAFC"/>
+  <rect x="0" y="0" width="1280" height="4" fill="#1E3A5F"/>
+  <rect x="0" y="4" width="1280" height="56" fill="#FFFFFF"/>
+  <text x="60" y="38" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="14" fill="#1E3A5F" font-weight="600">沙坪坝区道路精细化提质</text>
+  <rect x="260" y="22" width="1" height="20" fill="#E2E8F0"/>
+  <text x="280" y="38" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#F59E0B">02 现状分析</text>
+  <text x="1220" y="38" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#64748B" text-anchor="end">8 / 20</text>
+  <rect x="0" y="60" width="1280" height="1" fill="#E2E8F0"/>
+  <text x="60" y="105" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="28" font-weight="700" fill="#1E3A5F">2.3.1 问题类型分布 &amp; 2.3.2 严重度分析</text>
+
+  <g filter="url(#cardShadow)"><rect x="60" y="140" width="620" height="300" rx="8" fill="#FFFFFF"/><rect x="60" y="140" width="4" height="300" rx="2" fill="#4A90D9"/>
+    <text x="85" y="175" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="18" font-weight="600" fill="#1E3A5F">Top10 问题类型分布</text>
+    <rect x="85" y="190" width="570" height="235" rx="4" fill="#F8FAFC"/>
+    <text x="95" y="210" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748B">停车秩序整治<rect x="200" y="200" width="250" height="14" rx="3" fill="#E63946"/><tspan dx="8" fill="#334155">396</tspan></text>
+    <text x="95" y="230" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748B">人行道维护<rect x="200" y="220" width="240" height="14" rx="3" fill="#F59E0B"/><tspan dx="8" fill="#334155">384</tspan></text>
+    <text x="95" y="250" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748B">建筑外立面<rect x="200" y="240" width="120" height="14" rx="3" fill="#4A90D9"/><tspan dx="8" fill="#334155">189</tspan></text>
+    <text x="95" y="270" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748B">市容秩序<rect x="200" y="260" width="85" height="14" rx="3" fill="#2D6A4F"/><tspan dx="8" fill="#334155">138</tspan></text>
+    <text x="95" y="290" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748B">户外招牌<rect x="200" y="280" width="80" height="14" rx="3" fill="#2D6A4F"/><tspan dx="8" fill="#334155">127</tspan></text>
+    <text x="95" y="310" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748B">井盖维护<rect x="200" y="300" width="75" height="14" rx="3" fill="#2D6A4F"/><tspan dx="8" fill="#334155">122</tspan></text>
+    <text x="95" y="330" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748B">车行道维护<rect x="200" y="320" width="60" height="14" rx="3" fill="#2D6A4F"/><tspan dx="8" fill="#334155">101</tspan></text>
+    <text x="95" y="350" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748B">飞线占道<rect x="200" y="340" width="45" height="14" rx="3" fill="#2D6A4F"/><tspan dx="8" fill="#334155">75</tspan></text>
+    <text x="95" y="370" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748B">护栏整治<rect x="200" y="360" width="42" height="14" rx="3" fill="#2D6A4F"/><tspan dx="8" fill="#334155">69</tspan></text>
+    <text x="95" y="390" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748B">施工围挡<rect x="200" y="380" width="25" height="14" rx="3" fill="#2D6A4F"/><tspan dx="8" fill="#334155">43</tspan></text>
+    <text x="95" y="415" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#94A3B8">Top3占比54.9%，停车+人行道为两条并行主线</text>
+  </g>
+
+  <g filter="url(#cardShadow)"><rect x="700" y="140" width="520" height="300" rx="8" fill="#FFFFFF"/><rect x="700" y="140" width="4" height="300" rx="2" fill="#E63946"/>
+    <text x="725" y="175" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="18" font-weight="600" fill="#1E3A5F">严重度分布</text>
+    <rect x="725" y="200" width="220" height="100" rx="8" fill="#ECF8F0"/>
+    <text x="835" y="235" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="16" fill="#2D6A4F" text-anchor="middle">轻度</text>
+    <text x="835" y="275" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="36" font-weight="700" fill="#2ECC71" text-anchor="middle">1,258</text>
+    <text x="835" y="293" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#64748B" text-anchor="middle">71.3%</text>
+
+    <rect x="960" y="200" width="220" height="100" rx="8" fill="#FEF3E2"/>
+    <text x="1070" y="235" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="16" fill="#F59E0B" text-anchor="middle">中度</text>
+    <text x="1070" y="275" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="36" font-weight="700" fill="#F59E0B" text-anchor="middle">331</text>
+    <text x="1070" y="293" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#64748B" text-anchor="middle">18.8%</text>
+
+    <rect x="725" y="320" width="455" height="60" rx="6" fill="#FEE2E2"/>
+    <text x="952" y="345" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="16" fill="#E63946" text-anchor="middle">重度 175项 (9.9%)</text>
+    <text x="952" y="368" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">集中在汉渝路 · 盲道阻断+围挡倒塌</text>
+
+    <text x="725" y="420" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#64748B"><tspan x="725" dy="0">■ 轻度：外观瑕疵，可通过日常管护快速消项</tspan><tspan x="725" dy="16">■ 中度：功能受限，需集中整治</tspan><tspan x="725" dy="16">■ 重度：安全隐患，列入优先整改清单</tspan></text>
+  </g>
+
+  <g filter="url(#cardShadow)"><rect x="60" y="460" width="1160" height="80" rx="8" fill="#FFFFFF"/><rect x="60" y="460" width="1160" height="4" rx="2" fill="#E63946"/>
+    <text x="85" y="495" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="16" font-weight="600" fill="#E63946">核心发现</text>
+    <text x="85" y="520" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="14" fill="#334155">停车+人行道两项合计780项，占总量44.2%。商圈生活线6路合占79.3% —— 先解决商圈 = 解决逾八成问题</text>
+  </g>
+  <text x="60" y="700" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="11" fill="#94A3B8">数据来源：AI视觉巡查+人工复核  |  注：需替换为实际图表（条形图 + 饼图）</text>
+</svg>

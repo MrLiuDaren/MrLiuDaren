@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="navGrad" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="0.53" stop-color="#2F5597"/><stop offset="1" stop-color="#4874CB" stop-opacity="0.58"/>
+    </linearGradient>
+    <linearGradient id="pgGrad" x1="-0.1" y1="0.28" x2="1.1" y2="0.72">
+      <stop offset="0" stop-color="#034581"/><stop offset="1" stop-color="#6CAFEF"/>
+    </linearGradient>
+    <linearGradient id="barGrad" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="0.02" stop-color="#2F5597" stop-opacity="0.79"/><stop offset="0.75" stop-color="#2F5597"/><stop offset="1" stop-color="#2F5597" stop-opacity="0.79"/>
+    </linearGradient>
+    <filter id="cardGlow" x="-5%" y="-5%" width="110%" height="110%">
+      <feMorphology operator="dilate" radius="3" in="SourceAlpha" result="dilated"/>
+      <feGaussianBlur in="dilated" stdDeviation="7" result="blurred"/>
+      <feFlood flood-color="#1764FC" flood-opacity="0.2" result="flood"/>
+      <feComposite in="flood" in2="blurred" operator="in" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="boxShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="3" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <rect x="0" y="-6" width="1280" height="725" fill="#2F5597"/>
+  <rect x="29" y="52" width="1221" height="614" fill="#FFFFFF" filter="url(#cardGlow)"/>
+  <rect x="0" y="0" width="1280" height="69" fill="url(#navGrad)"/>
+  <polygon points="3,0 54,0 15,80 -37,80" fill="#034581"/>
+  <polygon points="44,9 84,9 54,71 14,71" fill="url(#pgGrad)"/>
+  <text x="77" y="45" font-family="微软雅黑, SimHei, sans-serif" font-size="37" fill="#FFFFFF" font-weight="bold">二、着力推动城市治理业务上平台</text>
+  <!-- 子标题 -->
+  <rect x="18" y="148" width="1256" height="51" rx="4" fill="url(#barGrad)"/>
+  <text x="55" y="185" font-family="微软雅黑, SimHei, sans-serif" font-size="32" fill="#FFFFFF" font-weight="bold">（一）城市治理数字化转型</text>
+  <!-- 左侧截图 -->
+  <rect x="40" y="220" width="550" height="360" fill="#E8EEF7" rx="6" stroke="#B6C7EA" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="315" y="390" font-family="微软雅黑, sans-serif" font-size="21" fill="#2F5597" font-weight="bold" text-anchor="middle">[ 平台界面截图 ]</text>
+  <text x="315" y="420" font-family="微软雅黑, sans-serif" font-size="16" fill="#64748B" font-weight="bold" text-anchor="middle">PNG 实证图片位</text>
+  <!-- 右侧要点 -->
+  <rect x="630" y="220" width="600" height="360" fill="#F8FAFC" rx="8"/>
+  <text x="660" y="260" font-family="微软雅黑, SimHei, sans-serif" font-size="24" fill="#2F5597" font-weight="bold">核心功能建设</text>
+  <rect x="660" y="285" width="540" height="1" fill="#B6C7EA"/>
+
+  <rect x="660" y="300" width="540" height="55" rx="6" fill="#FFFFFF" stroke="#3D68BF" stroke-width="1" filter="url(#boxShadow)"/>
+  <text x="690" y="333" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">数据汇聚共享平台</text>
+
+  <rect x="660" y="368" width="540" height="55" rx="6" fill="#FFFFFF" stroke="#3D68BF" stroke-width="1" filter="url(#boxShadow)"/>
+  <text x="690" y="401" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">智能分析研判系统</text>
+
+  <rect x="660" y="436" width="540" height="55" rx="6" fill="#FFFFFF" stroke="#3D68BF" stroke-width="1" filter="url(#boxShadow)"/>
+  <text x="690" y="469" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">协同指挥调度中心</text>
+
+  <rect x="660" y="504" width="540" height="55" rx="6" fill="#FFFFFF" stroke="#3D68BF" stroke-width="1" filter="url(#boxShadow)"/>
+  <text x="690" y="537" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">公众服务门户</text>
+
+  <!-- 底部结论 -->
+  <rect x="24" y="605" width="1210" height="59" rx="10" fill="#2F5597"/>
+  <text x="630" y="639" font-family="微软雅黑, SimHei, sans-serif" font-size="24" fill="#FFFFFF" font-weight="bold" text-anchor="middle">实现城市治理业务"一网统管、一屏通览、一键调度"</text>
+</svg>

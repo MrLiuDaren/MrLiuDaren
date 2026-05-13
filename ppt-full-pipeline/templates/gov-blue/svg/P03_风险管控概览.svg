@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="navGrad" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="0.53" stop-color="#2F5597"/><stop offset="1" stop-color="#4874CB" stop-opacity="0.58"/>
+    </linearGradient>
+    <linearGradient id="pgGrad" x1="-0.1" y1="0.28" x2="1.1" y2="0.72">
+      <stop offset="0" stop-color="#034581"/><stop offset="1" stop-color="#6CAFEF"/>
+    </linearGradient>
+    <linearGradient id="barGrad" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="0.02" stop-color="#2F5597" stop-opacity="0.79"/><stop offset="0.75" stop-color="#2F5597"/><stop offset="1" stop-color="#2F5597" stop-opacity="0.79"/>
+    </linearGradient>
+    <filter id="cardGlow" x="-5%" y="-5%" width="110%" height="110%">
+      <feMorphology operator="dilate" radius="3" in="SourceAlpha" result="dilated"/>
+      <feGaussianBlur in="dilated" stdDeviation="7" result="blurred"/>
+      <feFlood flood-color="#1764FC" flood-opacity="0.2" result="flood"/>
+      <feComposite in="flood" in2="blurred" operator="in" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect x="0" y="-6" width="1280" height="725" fill="#2F5597"/>
+  <rect x="29" y="52" width="1221" height="614" fill="#FFFFFF" filter="url(#cardGlow)"/>
+  <rect x="0" y="0" width="1280" height="69" fill="url(#navGrad)"/>
+  <polygon points="3,0 54,0 15,80 -37,80" fill="#034581"/>
+  <polygon points="44,9 84,9 54,71 14,71" fill="url(#pgGrad)"/>
+  <text x="77" y="45" font-family="微软雅黑, SimHei, sans-serif" font-size="37" fill="#FFFFFF" font-weight="bold">一、着力推动风险点规范管控</text>
+  <!-- 子标题条 -->
+  <rect x="18" y="148" width="1256" height="51" rx="4" fill="url(#barGrad)"/>
+  <text x="55" y="185" font-family="微软雅黑, SimHei, sans-serif" font-size="32" fill="#FFFFFF" font-weight="bold">（一）坚持"先行先试"</text>
+  <!-- 左侧说明文字 -->
+  <rect x="18" y="206" width="714" height="399" fill="#4874CB" fill-opacity="0.05"/>
+  <text x="47" y="249" font-family="微软雅黑, SimHei, sans-serif" font-size="24" fill="#2F5597" font-weight="bold" text-anchor="middle" x="375">率先在沙坪坝区开展<tspan fill="#C00000">城市基础设施风险动态管控</tspan>试点</text>
+  <!-- 核心流程步骤 -->
+  <rect x="36" y="333" width="656" height="51" rx="3" fill="#3C609E"/>
+  <text x="365" y="365" font-family="微软雅黑, sans-serif" font-size="24" fill="#FFFFFF" font-weight="bold" text-anchor="middle">运用DLEC风险评估模型</text>
+  <!-- 风险因子节点 -->
+  <ellipse cx="66" cy="429" rx="30" ry="30" fill="#FFFFFF" stroke="#4874CB" stroke-width="0.7"/>
+  <text x="66" y="434" font-family="微软雅黑, sans-serif" font-size="19" fill="#595959" font-weight="bold" text-anchor="middle">天气</text>
+  <ellipse cx="151" cy="429" rx="30" ry="30" fill="#FFFFFF" stroke="#4874CB" stroke-width="0.7"/>
+  <text x="151" y="434" font-family="微软雅黑, sans-serif" font-size="19" fill="#595959" font-weight="bold" text-anchor="middle">温度</text>
+  <ellipse cx="231" cy="429" rx="30" ry="30" fill="#FFFFFF" stroke="#4874CB" stroke-width="0.7"/>
+  <text x="231" y="434" font-family="微软雅黑, sans-serif" font-size="19" fill="#595959" font-weight="bold" text-anchor="middle">位置</text>
+  <rect x="286" y="399" width="169" height="59" rx="30" fill="#3C609E" fill-opacity="0.16"/>
+  <text x="370" y="422" font-family="微软雅黑, sans-serif" font-size="19" fill="#C00000" font-weight="bold" text-anchor="middle">各类自然、</text>
+  <text x="370" y="445" font-family="微软雅黑, sans-serif" font-size="19" fill="#C00000" font-weight="bold" text-anchor="middle">人为风险因子</text>
+  <ellipse cx="505" cy="429" rx="30" ry="30" fill="#FFFFFF" stroke="#4874CB" stroke-width="0.7"/>
+  <text x="505" y="434" font-family="微软雅黑, sans-serif" font-size="19" fill="#595959" font-weight="bold" text-anchor="middle">人流量</text>
+  <ellipse cx="585" cy="429" rx="30" ry="30" fill="#FFFFFF" stroke="#4874CB" stroke-width="0.7"/>
+  <text x="585" y="425" font-family="微软雅黑, sans-serif" font-size="19" fill="#595959" font-weight="bold" text-anchor="middle">设施</text>
+  <text x="585" y="440" font-family="微软雅黑, sans-serif" font-size="19" fill="#595959" font-weight="bold" text-anchor="middle">运行</text>
+  <text x="585" y="455" font-family="微软雅黑, sans-serif" font-size="19" fill="#595959" font-weight="bold" text-anchor="middle">年限</text>
+  <ellipse cx="663" cy="429" rx="30" ry="30" fill="#FFFFFF" stroke="#4874CB" stroke-width="0.7"/>
+  <text x="663" y="434" font-family="微软雅黑, sans-serif" font-size="19" fill="#595959" font-weight="bold" text-anchor="middle">…</text>
+  <!-- 连接线 -->
+  <line x1="96" y1="429" x2="121" y2="429" stroke="#4874CB" stroke-width="0.7"/>
+  <line x1="181" y1="429" x2="201" y2="429" stroke="#4874CB" stroke-width="0.7"/>
+  <line x1="261" y1="429" x2="280" y2="429" stroke="#4874CB" stroke-width="0.7"/>
+  <line x1="455" y1="429" x2="475" y2="429" stroke="#4874CB" stroke-width="0.7"/>
+  <line x1="535" y1="429" x2="555" y2="429" stroke="#4874CB" stroke-width="0.7"/>
+  <line x1="615" y1="429" x2="633" y2="429" stroke="#4874CB" stroke-width="0.7"/>
+  <!-- 纵向连接 -->
+  <path d="M 375 384 L 375 399" stroke="#B6C7EA" stroke-width="2" stroke-dasharray="1 3" fill="none"/>
+  <!-- 右侧截图占位 -->
+  <rect x="750" y="206" width="490" height="399" fill="#E8EEF7" rx="6" stroke="#B6C7EA" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="995" y="400" font-family="微软雅黑, sans-serif" font-size="21" fill="#2F5597" font-weight="bold" text-anchor="middle">[ 系统截图 / 数据看板 ]</text>
+  <text x="995" y="430" font-family="微软雅黑, sans-serif" font-size="16" fill="#64748B" font-weight="bold" text-anchor="middle">PNG 实证图片位</text>
+  <!-- 底部结论条 -->
+  <rect x="24" y="605" width="1210" height="59" rx="10" fill="#2F5597"/>
+  <text x="630" y="639" font-family="微软雅黑, SimHei, sans-serif" font-size="24" fill="#FFFFFF" font-weight="bold" text-anchor="middle">实现对风险点的"早发现、早预警、早处置"</text>
+</svg>

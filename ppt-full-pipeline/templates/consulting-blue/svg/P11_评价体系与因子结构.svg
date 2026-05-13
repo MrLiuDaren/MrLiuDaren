@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <defs>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="2"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.1"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="1280" height="720" fill="#F8FAFC"/>
+  <rect x="0" y="0" width="1280" height="4" fill="#1E3A5F"/>
+  <rect x="0" y="4" width="1280" height="56" fill="#FFFFFF"/>
+  <text x="60" y="38" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="14" fill="#1E3A5F" font-weight="600">沙坪坝区道路精细化提质</text>
+  <rect x="260" y="22" width="1" height="20" fill="#E2E8F0"/>
+  <text x="280" y="38" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#4A90D9">03 评价因子体系</text>
+  <text x="1220" y="38" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#64748B" text-anchor="end">11 / 20</text>
+  <rect x="0" y="60" width="1280" height="1" fill="#E2E8F0"/>
+  <text x="60" y="105" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="28" font-weight="700" fill="#1E3A5F">3.1 评价体系构建原则 &amp; 3.2 评分因子结构</text>
+
+  <g filter="url(#cardShadow)"><rect x="60" y="140" width="280" height="100" rx="8" fill="#FFFFFF"/><rect x="60" y="140" width="280" height="4" rx="2" fill="#4A90D9"/>
+    <text x="200" y="175" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="18" font-weight="700" fill="#4A90D9" text-anchor="middle">科学性</text>
+    <text x="200" y="205" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">定性与定量结合 · 5级评分</text>
+    <text x="200" y="225" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">阈值+一票否决机制</text>
+  </g>
+  <g filter="url(#cardShadow)"><rect x="360" y="140" width="280" height="100" rx="8" fill="#FFFFFF"/><rect x="360" y="140" width="280" height="4" rx="2" fill="#2D6A4F"/>
+    <text x="500" y="175" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="18" font-weight="700" fill="#2D6A4F" text-anchor="middle">可操作性</text>
+    <text x="500" y="205" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">指标可测量、可复核</text>
+    <text x="500" y="225" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">8步闭环评分流程</text>
+  </g>
+  <g filter="url(#cardShadow)"><rect x="660" y="140" width="280" height="100" rx="8" fill="#FFFFFF"/><rect x="660" y="140" width="280" height="4" rx="2" fill="#F59E0B"/>
+    <text x="800" y="175" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="18" font-weight="700" fill="#F59E0B" text-anchor="middle">全面性</text>
+    <text x="800" y="205" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">覆盖8大类49项全部维度</text>
+    <text x="800" y="225" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">18项因子不重不漏</text>
+  </g>
+  <g filter="url(#cardShadow)"><rect x="960" y="140" width="260" height="100" rx="8" fill="#FFFFFF"/><rect x="960" y="140" width="260" height="4" rx="2" fill="#E63946"/>
+    <text x="1090" y="175" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="18" font-weight="700" fill="#E63946" text-anchor="middle">导向性</text>
+    <text x="1090" y="205" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">风貌·功能·安全三维</text>
+    <text x="1090" y="225" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">功能与安全优先</text>
+  </g>
+
+  <rect x="60" y="270" width="1160" height="1" fill="#E2E8F0"/>
+  <text x="60" y="310" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="18" font-weight="600" fill="#1E3A5F">5大类18项评分因子结构</text>
+
+  <g filter="url(#cardShadow)"><rect x="60" y="335" width="220" height="280" rx="8" fill="#FFFFFF"/><rect x="60" y="335" width="220" height="6" rx="3" fill="#E63946"/>
+    <text x="170" y="370" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="16" font-weight="700" fill="#E63946" text-anchor="middle">A 道路结构 30%</text>
+    <text x="170" y="400" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#334155" text-anchor="middle"><tspan x="170" dy="0">A1 车行道平整度</tspan><tspan x="170" dy="20">A2 人行道完好性</tspan><tspan x="170" dy="20">A3 盲道规范性★</tspan><tspan x="170" dy="20">A4 井盖/路沿石</tspan></text>
+  </g>
+  <g filter="url(#cardShadow)"><rect x="295" y="335" width="220" height="280" rx="8" fill="#FFFFFF"/><rect x="295" y="335" width="220" height="6" rx="3" fill="#F59E0B"/>
+    <text x="405" y="370" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="16" font-weight="700" fill="#F59E0B" text-anchor="middle">B 附属设施 20%</text>
+    <text x="405" y="400" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#334155" text-anchor="middle"><tspan x="405" dy="0">B1 标志牌/路名牌</tspan><tspan x="405" dy="20">B2 护栏/隔离设施</tspan><tspan x="405" dy="20">B3 照明设施★</tspan><tspan x="405" dy="20">B4 施工围挡★</tspan></text>
+  </g>
+  <g filter="url(#cardShadow)"><rect x="530" y="335" width="220" height="280" rx="8" fill="#FFFFFF"/><rect x="530" y="335" width="220" height="6" rx="3" fill="#2D6A4F"/>
+    <text x="640" y="370" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="16" font-weight="700" fill="#2D6A4F" text-anchor="middle">C 环境景观 25%</text>
+    <text x="640" y="400" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#334155" text-anchor="middle"><tspan x="640" dy="0">C1 绿化品质</tspan><tspan x="640" dy="20">C2 建筑外立面</tspan><tspan x="640" dy="20">C3 户外广告/招牌</tspan><tspan x="640" dy="20">C4 市容整洁度</tspan></text>
+  </g>
+  <g filter="url(#cardShadow)"><rect x="765" y="335" width="220" height="280" rx="8" fill="#FFFFFF"/><rect x="765" y="335" width="220" height="6" rx="3" fill="#4A90D9"/>
+    <text x="875" y="370" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="16" font-weight="700" fill="#4A90D9" text-anchor="middle">D 秩序管理 15%</text>
+    <text x="875" y="400" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#334155" text-anchor="middle"><tspan x="875" dy="0">D1 停车秩序★</tspan><tspan x="875" dy="20">D2 占道经营/堆物</tspan><tspan x="875" dy="20">D3 施工管理</tspan></text>
+  </g>
+  <g filter="url(#cardShadow)"><rect x="1000" y="335" width="220" height="280" rx="8" fill="#FFFFFF"/><rect x="1000" y="335" width="220" height="6" rx="3" fill="#2ECC71"/>
+    <text x="1110" y="370" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="16" font-weight="700" fill="#2ECC71" text-anchor="middle">E 特色品质 10%</text>
+    <text x="1110" y="400" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#334155" text-anchor="middle"><tspan x="1110" dy="0">E1 文化特色/景观小品</tspan><tspan x="1110" dy="20">E2 智慧设施</tspan><tspan x="1110" dy="20">E3 无障碍/适老化</tspan></text>
+  </g>
+
+  <rect x="60" y="640" width="1160" height="60" rx="6" fill="#1E3A5F"/>
+  <text x="640" y="675" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="16" fill="#FFFFFF" text-anchor="middle">S = (A×30% + B×20% + C×25% + D×15% + E×10%) × 100  |  ★安全项 ≤0.3 → 一票否决 · 上限锁定54分</text>
+</svg>

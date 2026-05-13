@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="navGrad" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="0.53" stop-color="#2F5597"/><stop offset="1" stop-color="#4874CB" stop-opacity="0.58"/>
+    </linearGradient>
+    <linearGradient id="pgGrad" x1="-0.1" y1="0.28" x2="1.1" y2="0.72">
+      <stop offset="0" stop-color="#034581"/><stop offset="1" stop-color="#6CAFEF"/>
+    </linearGradient>
+    <linearGradient id="barGrad" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="0.02" stop-color="#2F5597" stop-opacity="0.79"/><stop offset="0.75" stop-color="#2F5597"/><stop offset="1" stop-color="#2F5597" stop-opacity="0.79"/>
+    </linearGradient>
+    <linearGradient id="cardBg" x1="0.5" y1="1" x2="0.5" y2="0">
+      <stop offset="0" stop-color="#0676FE" stop-opacity="0.18"/><stop offset="1" stop-color="#0162D7" stop-opacity="0.07"/>
+    </linearGradient>
+    <filter id="cardGlow" x="-5%" y="-5%" width="110%" height="110%">
+      <feMorphology operator="dilate" radius="3" in="SourceAlpha" result="dilated"/>
+      <feGaussianBlur in="dilated" stdDeviation="7" result="blurred"/>
+      <feFlood flood-color="#1764FC" flood-opacity="0.2" result="flood"/>
+      <feComposite in="flood" in2="blurred" operator="in" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="13" stdDeviation="22" flood-color="#0162D7" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <rect x="0" y="-6" width="1280" height="725" fill="#2F5597"/>
+  <rect x="29" y="52" width="1221" height="614" fill="#FFFFFF" filter="url(#cardGlow)"/>
+  <rect x="0" y="0" width="1280" height="69" fill="url(#navGrad)"/>
+  <polygon points="3,0 54,0 15,80 -37,80" fill="#034581"/>
+  <polygon points="44,9 84,9 54,71 14,71" fill="url(#pgGrad)"/>
+  <text x="77" y="45" font-family="微软雅黑, SimHei, sans-serif" font-size="37" fill="#FFFFFF" font-weight="bold">二、着力推动城市治理业务上平台</text>
+  <!-- 子标题 -->
+  <rect x="18" y="148" width="1256" height="51" rx="4" fill="url(#barGrad)"/>
+  <text x="55" y="185" font-family="微软雅黑, SimHei, sans-serif" font-size="32" fill="#FFFFFF" font-weight="bold">（四）聚焦城市交通拥堵问题</text>
+  <!-- 流程卡片 -->
+  <rect x="30" y="220" width="1220" height="100" rx="9" fill="url(#cardBg)"/>
+  <rect x="38" y="245" width="280" height="50" rx="10" fill="#2E54A1" filter="url(#cardShadow)"/>
+  <text x="178" y="275" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#FFFFFF" font-weight="bold">多源数据融合</text>
+  <rect x="350" y="255" width="170" height="40" rx="8" fill="#FFFFFF" stroke-dasharray="4 4"/>
+  <text x="435" y="280" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="18" fill="#2F5597" font-weight="bold">拥堵点位识别</text>
+  <rect x="555" y="255" width="170" height="40" rx="8" fill="#FFFFFF" stroke-dasharray="4 4"/>
+  <text x="640" y="280" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="18" fill="#2F5597" font-weight="bold">成因诊断分析</text>
+  <rect x="760" y="255" width="170" height="40" rx="8" fill="#FFFFFF" stroke-dasharray="4 4"/>
+  <text x="845" y="280" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="18" fill="#2F5597" font-weight="bold">策略智能推荐</text>
+  <rect x="965" y="255" width="170" height="40" rx="8" fill="#FFFFFF" stroke-dasharray="4 4"/>
+  <text x="1050" y="280" text-anchor="middle" font-family="微软雅黑, SimHei, sans-serif" font-size="18" fill="#2F5597" font-weight="bold">效果评估反馈</text>
+  <!-- 箭头 -->
+  <rect x="325" y="268" width="18" height="18" rx="3" fill="#4874CB" fill-opacity="0.6"/>
+  <rect x="528" y="268" width="18" height="18" rx="3" fill="#4874CB" fill-opacity="0.6"/>
+  <rect x="733" y="268" width="18" height="18" rx="3" fill="#4874CB" fill-opacity="0.6"/>
+  <rect x="938" y="268" width="18" height="18" rx="3" fill="#4874CB" fill-opacity="0.6"/>
+  <!-- 左侧截图区 -->
+  <rect x="40" y="340" width="580" height="240" fill="#E8EEF7" rx="6" stroke="#B6C7EA" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="330" y="455" font-family="微软雅黑, sans-serif" font-size="21" fill="#2F5597" font-weight="bold" text-anchor="middle">[ 交通拥堵分析截图 ]</text>
+  <text x="330" y="485" font-family="微软雅黑, sans-serif" font-size="16" fill="#64748B" font-weight="bold" text-anchor="middle">左侧：热力图 / 流量监测</text>
+  <!-- 右侧要点 -->
+  <rect x="650" y="340" width="590" height="240" fill="#F8FAFC" rx="8"/>
+  <text x="680" y="380" font-family="微软雅黑, SimHei, sans-serif" font-size="21" fill="#2F5597" font-weight="bold">治理成效</text>
+  <rect x="680" y="400" width="530" height="50" rx="6" fill="#FFFFFF" stroke="#3D68BF" stroke-width="1"/>
+  <text x="710" y="430" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">沙坪坝核心区早晚高峰通行效率提升XX%</text>
+  <rect x="680" y="465" width="530" height="50" rx="6" fill="#FFFFFF" stroke="#3D68BF" stroke-width="1"/>
+  <text x="710" y="495" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#4264A0" font-weight="bold">重点拥堵路段数量减少XX处</text>
+  <rect x="680" y="530" width="530" height="42" rx="6" fill="#3C609E" fill-opacity="0.1"/>
+  <text x="945" y="556" font-family="微软雅黑, SimHei, sans-serif" font-size="19" fill="#2F5597" font-weight="bold" text-anchor="middle">目标：数据驱动替代经验判断</text>
+  <!-- 底部结论 -->
+  <rect x="24" y="605" width="1210" height="59" rx="10" fill="#2F5597"/>
+  <text x="630" y="639" font-family="微软雅黑, SimHei, sans-serif" font-size="24" fill="#FFFFFF" font-weight="bold" text-anchor="middle">实现城市交通治理从经验判断向数据驱动转变</text>
+</svg>

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <defs>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="2"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.1"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="1280" height="720" fill="#F8FAFC"/>
+  <rect x="0" y="0" width="1280" height="4" fill="#1E3A5F"/>
+  <rect x="0" y="4" width="1280" height="56" fill="#FFFFFF"/>
+  <text x="60" y="38" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="14" fill="#1E3A5F" font-weight="600">沙坪坝区道路精细化提质</text>
+  <rect x="260" y="22" width="1" height="20" fill="#E2E8F0"/>
+  <text x="280" y="38" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#2ECC71">05 案例借鉴</text>
+  <text x="1220" y="38" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#64748B" text-anchor="end">17 / 20</text>
+  <rect x="0" y="60" width="1280" height="1" fill="#E2E8F0"/>
+  <text x="60" y="105" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="28" font-weight="700" fill="#1E3A5F">5.1 国内案例 &amp; 5.2 可借鉴经验</text>
+
+  <g filter="url(#cardShadow)"><rect x="60" y="140" width="280" height="110" rx="8" fill="#FFFFFF"/><rect x="60" y="140" width="280" height="4" rx="2" fill="#E63946"/>
+    <text x="200" y="175" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="15" font-weight="600" fill="#E63946" text-anchor="middle">上海黄浦「一街一路」</text>
+    <text x="200" y="200" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748B" text-anchor="middle"><tspan x="200" dy="0">160个项目 · 3.8亿 · 15万人</tspan><tspan x="200" dy="16">针灸式微更新+四统一机制</tspan></text>
+  </g>
+  <g filter="url(#cardShadow)"><rect x="360" y="140" width="280" height="110" rx="8" fill="#FFFFFF"/><rect x="360" y="140" width="280" height="4" rx="2" fill="#F59E0B"/>
+    <text x="500" y="175" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="15" font-weight="600" fill="#F59E0B" text-anchor="middle">成都「最美街道」</text>
+    <text x="500" y="200" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748B" text-anchor="middle"><tspan x="500" dy="0">120+条 · 12亿投资 · 住建部推荐</tspan><tspan x="500" dy="16">五大维度 · 以评促建 · 动态摘牌</tspan></text>
+  </g>
+  <g filter="url(#cardShadow)"><rect x="660" y="140" width="280" height="110" rx="8" fill="#FFFFFF"/><rect x="660" y="140" width="280" height="4" rx="2" fill="#4A90D9"/>
+    <text x="800" y="175" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="15" font-weight="600" fill="#4A90D9" text-anchor="middle">广州天河龙洞街道</text>
+    <text x="800" y="200" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748B" text-anchor="middle"><tspan x="800" dy="0">3.8km · 4200万 · 口袋公园</tspan><tspan x="800" dy="16">四位一体 · 三线下地 · 多杆合一</tspan></text>
+  </g>
+  <g filter="url(#cardShadow)"><rect x="960" y="140" width="260" height="110" rx="8" fill="#FFFFFF"/><rect x="960" y="140" width="260" height="4" rx="2" fill="#2D6A4F"/>
+    <text x="1090" y="175" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="15" font-weight="600" fill="#2D6A4F" text-anchor="middle">武汉汉阳非遗街区</text>
+    <text x="1090" y="200" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748B" text-anchor="middle"><tspan x="1090" dy="0">2.2km · 八项标准 · 文商旅融合</tspan><tspan x="1090" dy="16">活力+40% · 游客+60%</tspan></text>
+  </g>
+
+  <g filter="url(#cardShadow)"><rect x="60" y="270" width="280" height="110" rx="8" fill="#FFFFFF"/><rect x="60" y="270" width="280" height="4" rx="2" fill="#2ECC71"/>
+    <text x="200" y="305" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="15" font-weight="600" fill="#2ECC71" text-anchor="middle">深圳南山慢行系统</text>
+    <text x="200" y="330" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748B" text-anchor="middle"><tspan x="200" dy="0">7.6km · 5600万 · 路权再分配</tspan><tspan x="200" dy="16">三层隔离 · 智能斑马线</tspan></text>
+  </g>
+  <g filter="url(#cardShadow)"><rect x="360" y="270" width="280" height="110" rx="8" fill="#FFFFFF"/><rect x="360" y="270" width="280" height="4" rx="2" fill="#2D6A4F"/>
+    <text x="500" y="305" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="15" font-weight="600" fill="#2D6A4F" text-anchor="middle">广东台山林荫大道</text>
+    <text x="500" y="330" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748B" text-anchor="middle"><tspan x="500" dy="0">28条主次干道 · 56km绿化</tspan><tspan x="500" dy="16">三一机制 · 一路一档 · 乡土树种</tspan></text>
+  </g>
+  <g filter="url(#cardShadow)"><rect x="660" y="270" width="280" height="110" rx="8" fill="#FFFFFF"/><rect x="660" y="270" width="280" height="4" rx="2" fill="#E63946"/>
+    <text x="800" y="305" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="15" font-weight="600" fill="#E63946" text-anchor="middle">广东榕城风貌带</text>
+    <text x="800" y="330" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748B" text-anchor="middle"><tspan x="800" dy="0">5.6km² · 风貌服从功能</tspan><tspan x="800" dy="16">做减法 · 多杆合一 · 精细化导则</tspan></text>
+  </g>
+
+  <g filter="url(#cardShadow)"><rect x="960" y="270" width="260" height="110" rx="8" fill="#FFFFFF"/><rect x="960" y="270" width="260" height="4" rx="2" fill="#F59E0B"/>
+    <text x="1090" y="305" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="15" font-weight="600" fill="#F59E0B" text-anchor="middle">四大可借鉴经验</text>
+    <text x="1090" y="330" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748B" text-anchor="middle"><tspan x="1090" dy="0">① 评分因子设计</tspan><tspan x="1090" dy="16">② 风貌定位逻辑</tspan></text>
+    <text x="1090" y="358" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748B" text-anchor="middle"><tspan x="1090" dy="0">③ 整治施工组织</tspan><tspan x="1090" dy="16">④ 长效管护机制</tspan></text>
+  </g>
+
+  <rect x="60" y="410" width="1160" height="1" fill="#E2E8F0"/>
+
+  <text x="60" y="450" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="16" font-weight="600" fill="#1E3A5F">可借鉴经验要点</text>
+  <rect x="60" y="470" width="560" height="100" rx="8" fill="#ECF8F0"/>
+  <text x="80" y="500" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="14" font-weight="600" fill="#2D6A4F">经验一：评分因子设计</text>
+  <text x="80" y="530" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#334155"><tspan x="80" dy="0">指标量化可考核 · 路段权重差异化</tspan><tspan x="80" dy="18">公众参与权重≥20% · 季度动态校准</tspan></text>
+
+  <rect x="640" y="470" width="580" height="100" rx="8" fill="#EBF4FF"/>
+  <text x="660" y="500" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="14" font-weight="600" fill="#4A90D9">经验二：风貌定位逻辑</text>
+  <text x="660" y="530" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#334155"><tspan x="660" dy="0">三段式流程（现状→主题→要素） · 文化有机融入</tspan><tspan x="660" dy="18">功能优先为底线 · 示范段先行200-300m</tspan></text>
+
+  <rect x="60" y="590" width="560" height="100" rx="8" fill="#FEF3E2"/>
+  <text x="80" y="620" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="14" font-weight="600" fill="#F59E0B">经验三：整治施工组织</text>
+  <text x="80" y="650" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#334155"><tspan x="80" dy="0">分段分期实施（≤500m/段 · ≤45天/段）</tspan><tspan x="80" dy="18">全要素统筹 · 施工期全程沟通</tspan></text>
+
+  <rect x="640" y="590" width="580" height="100" rx="8" fill="#FEE2E2"/>
+  <text x="660" y="620" font-family="PingFang SC, Microsoft YaHei, SimHei, sans-serif" font-size="14" font-weight="600" fill="#E63946">经验四：长效管护机制</text>
+  <text x="660" y="650" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#334155"><tspan x="660" dy="0">一段一档数字化管理 · 年度复评+动态摘牌</tspan><tspan x="660" dy="18">AI+人工+市民三级巡查 · 路长公示+公众监督</tspan></text>
+</svg>
