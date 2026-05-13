@@ -234,9 +234,10 @@ python skills/ppt-master/scripts/svg_to_pptx.py <project>
 
 | 陷阱 | 现象 | 对策 |
 |------|------|------|
+| **SVG `<image>` 在 `<rect>` 前面** | 封面/内容页有图但被不透明色块完全盖住 | `<image>` 必须放在背景 `<rect>` **后面**；全幅背景 rect 加 `opacity=\"0.65\"`。详见 `references/svg-image-lessons.md` |
 | `browser_navigate` + 中文 URL | `'utf-8' codec can't decode byte 0xb2` | 用 `curl -x proxy` 下载；中文搜索用 DuckDuckGo |
 | Unsplash URL 图不对题 | 视觉验证出故宫/西班牙/新加坡而非重庆 | 视觉模型逐张验证后再用；不可跳过 |
-| `read_file`→`write_file` 编辑 SVG | XML 损坏（行号前缀污染） | 用 Python `open()` 直接读写文件 |
+| `read_file`→`write_file` 编辑 SVG | XML 损坏（行号前缀 `     1\|` 污染文件头） | **禁止用 hermes_tools 的 read_file/write_file 编辑 SVG**；必须用 Python `open()` 直接读写 |
 | AI 生图并行调用 | 429 rate limit | 必须串行调用 |
 | 图片嵌入报 PIL 错误 | `UnidentifiedImageError` | `file *.jpg` 验证；损坏文件换有效源 |
 | API key 截断/失效 | 401 无效令牌 | 用 `memory replace` 更新完整 key |
