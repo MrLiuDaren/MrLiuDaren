@@ -103,7 +103,7 @@ cp -r ppt-full-pipeline ~/AppData/Local/hermes/skills/productivity/
 **内容页卡片布局要求**：见 [`references/card-layout-pattern.md`](references/card-layout-pattern.md) —— 独立卡片、内容密度、字体规格、XML 转义。
 **动作**：
 1. 将每页文案转为 ppt-master SVG 生成指令，嵌入模板配色/字体/布局模式
-2. **图片占位（必须）**：读 Agent 2 的 `【配图】` 标签，按以下规则在 SVG 中预留空间：
+2. **图片占位（必须）**——完整工作流见 [`references/image-placeholder-workflow.md`](references/image-placeholder-workflow.md)：
 
 | 配图类型 | SVG 做法 | Agent 7 填图方式 |
 |----------|----------|-----------------|
@@ -272,7 +272,7 @@ python skills/ppt-master/scripts/svg_to_pptx.py <project>
 ```
 
 ### 7b. 嵌入图片
-用 python-pptx 的 `slide.shapes.add_picture()` 嵌入，填入 Agent 3 预留的位置：
+完整占位框工作流见 [`references/image-placeholder-workflow.md`](references/image-placeholder-workflow.md)。核心三步：
 
 - **全幅背景页**：`add_picture(0, 0, prs.slide_width, prs.slide_height)` + 将图片移至底层 z-order：
   ```python
@@ -281,7 +281,7 @@ python skills/ppt-master/scripts/svg_to_pptx.py <project>
   sp.getparent().remove(sp)
   slide.shapes._spTree.insert(2, sp)  # 插入到树的最前面 = 最底层
   ```
-- **侧栏插图页**：读虚线占位框坐标 → `add_picture(x, y, Inches(w/72), Inches(h/72))`
+- **侧栏插图页**：解析 SVG 中的 `<!-- IMAGE_PLACEHOLDER: x=... y=... w=... h=... -->` 注释，提取坐标，嵌入图片。坐标转换：`px_to_in = lambda px: Emu(int(px) * 12700)`，然后 `slide.shapes.add_picture(img, px_to_in(x), px_to_in(y), px_to_in(w), px_to_in(h))`。
 - **数据图表页**：同上替换
 
 ### 7c. 完成确认（强制）
@@ -300,6 +300,7 @@ python skills/ppt-master/scripts/svg_to_pptx.py <project>
 | 标题 | 每个一二标题必须对应 PPT 页面 |
 | 卡片递进 | 上页卡片要点 = 下页概括总起 | 卡片渲染 | **每个要点=独立视觉卡片**（独立`<g>`+圆角白底+金色左条），每卡≥4行原文，字体≥14pt，**严禁所有要点挤一个框** |
 | 配图 | 只给内容相关的页配图，不对应的宁可留白 |
+| 图片占位 | **SVG生成时必须预留占位框**：卡片收窄至430px，右侧放虚线`<rect stroke-dasharray="8,4">`+`<!-- IMAGE_PLACEHOLDER: x= y= w= h= -->`注释。Agent 7解析注释取坐标替换真图，严禁硬贴导致重叠 |
 | 封面底图 | 必须搜索真实照片，禁止 AI 生成 |
 | 关卡 | 四个用户确认点不可跳过 |
 
@@ -310,6 +311,8 @@ python skills/ppt-master/scripts/svg_to_pptx.py <project>
 | 陷阱 | 现象 | 对策 |
 |------|------|------|
 | **SVG `<image>` 在 `<rect>` 前面** | 封面/内容页有图但被不透明色块完全盖住 | `<image>` 必须放在背景 `<rect>` **后面**；全幅背景 rect 加 `opacity="0.65"` |
+| **章节页渐变rect遮挡背景图** | 章节页嵌了图但看不到，被渐变 `<rect fill="url(#sg)">` 盖住 | 章节页SVG的渐变rect必须加 `opacity="0.65"`；或在python-pptx中注入alpha通道 |
+| **内容页右侧无图** | 配图规划写了右侧插图但PPT里没有 | Agent 7 必须为每页内容页调用 `slide.shapes.add_picture(img, right_x, right_y, right_w, right_h)` |
 | **`cell.text = ''` 产生空 run** | python-docx 表格字体检测失败，`runs[0]` 是空 run | 用 `cell.paragraphs[0].clear()` 替代 `cell.text = ''`；或检测 `run.text.strip()` 跳过空 run |
 | **`read_file` + `write_file` 污染 SVG** | `svg_to_pptx` 报 `syntax error: line 1, column 5`，文件以空格开头 | **禁止**用 `read_file`/`write_file` 编辑 SVG。用 `terminal` + Python `open()`。详见 `references/file-io-pitfalls.md` |
 | 未验证图片直接使用 | | |
