@@ -281,7 +281,11 @@ python skills/ppt-master/scripts/svg_to_pptx.py <project>
   sp.getparent().remove(sp)
   slide.shapes._spTree.insert(2, sp)  # 插入到树的最前面 = 最底层
   ```
-- **侧栏插图页**：解析 SVG 中的 `<!-- IMAGE_PLACEHOLDER: x=... y=... w=... h=... -->` 注释，提取坐标，嵌入图片。坐标转换：`px_to_in = lambda px: Emu(int(px) * 12700)`，然后 `slide.shapes.add_picture(img, px_to_in(x), px_to_in(y), px_to_in(w), px_to_in(h))`。
+- **侧栏插图页**（占位框替换+裁剪）：
+  1. 解析 SVG 中 `<!-- IMAGE_PLACEHOLDER: x=... y=... w=... h=... -->` 注释取坐标
+  2. **删除占位框形状**：搜索 slide.shapes 中虚线 rect（`dash_style==4`）、"配图位"文字、浅底色块（`#F5F0EB`），逐个 `remove()`
+  3. **裁剪适配**：用 PIL `crop_to_fit(img, target_w, target_h)` — 宽高比不匹配时裁宽或裁高，不拉伸变形
+  4. 按占位框坐标嵌入：`px_to_emu = lambda px: Emu(int(px) * 12700)`，`slide.shapes.add_picture(cropped_img, px_to_emu(x), px_to_emu(y), px_to_emu(w), px_to_emu(h))`
 - **数据图表页**：同上替换
 
 ### 7c. 完成确认（强制）
@@ -320,7 +324,8 @@ python skills/ppt-master/scripts/svg_to_pptx.py <project>
 | Unsplash URL 图不对题 | 视觉验证出故宫/西班牙/新加坡而非重庆 | 视觉模型逐张验证后再用；不可跳过 |
 | `read_file`→`write_file` 编辑 SVG | XML 损坏（行号前缀 `     1\|` 污染文件头） | **禁止用 hermes_tools 的 read_file/write_file 编辑 SVG**；必须用 Python `open()` 直接读写 |
 | AI 生图并行调用 | 429 rate limit | 必须串行调用 |
-| **内容页单一大框（非卡片）** | 所有条目挤在一个大白框里，无独立卡片 | 每个条目必须是独立 `<g filter="url(#cs)">` + `<path fill="#FFFFFF">` + 金色左条。**禁止**用一个 `<g>` 包裹全部 `<text>`。见 `references/card-layout-pattern.md` |
+| **内容页单一大框（非卡片）** | 所有条目挤在一个大白框里，无独立卡片 | 每个条目必须是独立 `<g filter="url(#cs)">` + `<path fill="#FFFFFF">` + 金色左条。**禁止**用一个 `<g>` 包裹全部 `<text>`。见 `references/svg-card-workflow.md` |
+| **图片与卡片重叠** | 直接硬贴图片导致与卡片文字打架 | SVG 生成时必须预留占位框（虚线+注释），Agent 7 解析坐标替换。无图页卡片放宽至 560px 全宽。详见 `references/svg-card-workflow.md` |
 | **卡片内容单薄** | 每卡仅 1 行概括，投影后空洞 | 每卡至少 3-4 行实质性文字，**从原始 DOCX 提取**，不自编不精简。见 `references/card-layout-pattern.md` 内容密度铁律 |
 | **卡片字体太小** | 13pt 正文投影完全看不清 | 卡片标签 ≥16pt bold，卡片正文 ≥14pt。注释 11pt 例外 |
 | **SVG 中 `<` 未转义** | `svg_to_pptx` 报 `not well-formed (invalid token)` | 所有 XML 特殊字符转义：`<` → `&lt;`，`>` → `&gt;`，`&` → `&amp;` |
