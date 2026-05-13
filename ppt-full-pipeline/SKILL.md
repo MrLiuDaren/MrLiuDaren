@@ -1,7 +1,7 @@
 ---
 name: ppt-full-pipeline
 description: "Complete 8-Agent PPT generation Agent. Converts documents (DOCX/PDF/Excel) to professional PPTX with image planning. Bundled with 3+ PPT templates, v0.1 prompt, and setup scripts. Self-contained installable package."
-version: 2.0.0
+version: 2.1.0
 metadata:
   hermes:
     tags: [ppt, pipeline, agent, government, multi-agent]
@@ -31,12 +31,12 @@ cp -r ppt-full-pipeline ~/AppData/Local/hermes/skills/productivity/
  需求理解  →   文案创作   →   模板选择   →   提示词细化  →   PPT生成
  (Hermes)     (v0.1提示词)    (模板库匹配)    (PPT-Pro)      (PPT-Master)
 
- Agent 5       Agent 6        Agent 7
- 配图规划  →   搜图生图   →   组装定稿
- (Hermes)     (Browser+DALL-E) (pptxgenjs)
+ Agent 5       Agent 6                       Agent 7
+ 配图规划  →   搜图生图+视觉验证   →   组装定稿+完成确认
+ (Hermes)     (DuckDuckGo+Vision+DALL-E)    (python-pptx)
 ```
 
-**三个确认关卡**：Agent 2（文案）→ Agent 2.5（模板）→ Agent 5（配图）→ Agent 7（终稿）
+**四个确认关卡**：Agent 2（文案）→ Agent 2.5（模板）→ Agent 5（配图）→ Agent 7（终稿）
 
 ---
 
@@ -81,11 +81,26 @@ cp -r ppt-full-pipeline ~/AppData/Local/hermes/skills/productivity/
 
 ---
 
-## Agent 3：提示词细化
+## Agent 3：提示词细化（含图片占位——关键）
 
 **执行者**：PPT-Pro（加载 `ppt-pro` skill）
 **输入**：Agent 2 文案 + Agent 2.5 模板 design_spec
-**动作**：将每页文案转为 ppt-master SVG 生成指令，嵌入模板配色/字体/布局模式
+**动作**：
+1. 将每页文案转为 ppt-master SVG 生成指令，嵌入模板配色/字体/布局模式
+2. **图片占位（必须）**：读 Agent 2 的 `【配图】` 标签，按以下规则在 SVG 中预留空间：
+
+| 配图类型 | SVG 做法 | Agent 7 填图方式 |
+|----------|----------|-----------------|
+| **全幅背景**（封面/章节/封底） | 叠加层降低不透明度：`stop-opacity` 从 `0.92` → `0.70`，在叠加层下方放一个 `<rect>` 占位标注 `"背景图位"` | 找到占位 `<rect>` 的坐标 → 删除 → `add_picture(0, 0, 13.33)` |
+| **侧栏插图**（左/右） | 文字卡片收窄到 `width="560"`，另一侧放虚线框 `<rect stroke-dasharray="6" fill="none" stroke="#94A3B8"/>` 标注 `"图片位"` | 读取虚线框的 x,y,w,h → 删除 → `add_picture(x, y, w)` |
+| **数据图表** | `<rect>` 占位 + `"【matplotlib生成】"` 文字 | 同上替换 |
+| **无配图** | 全宽 1160px 卡片，不预留 | — |
+
+**SVG 生成参数调整**：
+- 封面深蓝渐变：第2个 `<stop stop-opacity>` 从 `0.95` → `0.65`
+- 章节页：`<rect fill="url(#secGrad)">` 保持原值，不加额外 opacity
+- 内容页卡片宽度：有侧图 → `width="560"`（左栏）或 `width="580"`（右栏），无图 → `width="1160"`
+- 封底渐变：同封面，`stop-opacity` 降到 `0.65`
 
 ---
 
@@ -99,7 +114,7 @@ cd ppt-master/
 python skills/ppt-master/scripts/finalize_svg.py <project>
 python skills/ppt-master/scripts/svg_to_pptx.py <project>
 ```
-**输出**：初稿 PPTX
+**输出**：初稿 PPTX（含图片占位）
 
 ---
 
@@ -109,23 +124,23 @@ python skills/ppt-master/scripts/svg_to_pptx.py <project>
 **输入**：初稿 PPTX + Agent 2 配图提示词
 **动作**：
 1. 逐页审查配图需求，按类型分流：
-   - 意向照片/底图 → cn.bing.com 搜真实图
-   - 结构图 → DALL-E（api.apiyi.com/v1）
+   - 意向照片/底图 → DuckDuckGo 搜真实图（不用 Unsplash，ID 不对应内容）
+   - 结构图 → DALL-E（api.apiyi.com/v1），限流时备选手绘 SVG（方案 B）
    - 数据图表 → matplotlib
-2. 输出配图清单表
+2. 输出配图清单表（每页：类型/来源/关键词）
 **关卡**：⚠️ 必须用户确认
 **铁律**：封面底图/实景照片禁止 AI 生成
 
 ---
 
-## Agent 6：搜图生图
+## Agent 6：搜图生图 + 视觉验证
 
 **执行者**：terminal(curl) + vision model + DALL-E + matplotlib
 **输入**：Agent 5 配图清单
 
 ### 6a. 实景照片搜索
 
-首选 DuckDuckGo（中文搜索稳定），不用 Unsplash（ID 不对应内容）：
+首选 DuckDuckGo（中文搜索稳定）：
 
 ```bash
 pip install duckduckgo-search -q
@@ -135,18 +150,16 @@ with DDGS() as d: print(list(d.images('Chongqing Hongyadong night', max_results=
 "
 ```
 
-## Agent 6b：下载 + 视觉验证（强制关卡——每张必验）
+### 6b. 下载 + 视觉验证（强制关卡——每张必验）
 
-**执行者**：terminal + visual model
-**输入**：Agent 6a 搜索到的图片 URL 列表
-**动作**：
-1. `curl -x proxy` 逐张下载
+1. `curl -x http://127.0.0.1:7890` 逐张下载
 2. `file *.jpg` 验证是 JPEG 非 HTML
 3. **vision_analyze 逐张验证**：`"这是重庆XX场景吗？与<页面主题>相关吗？"`
 4. 标记：✅ 相关 → 重命名为 `PXX_描述.jpg` / ❌ 不相关 → 删除，换备选 URL 重搜
-**铁律**：禁止跳过视觉验证直接使用下载的图片。曾实测 Unsplash 直链返回故宫/西班牙别墅/新加坡鱼尾狮。
 
-### 6c. AI 结构图（方案 A）
+**铁律**：禁止跳过视觉验证。曾实测 Unsplash 直链返回故宫/西班牙别墅/新加坡鱼尾狮，完全不是重庆。
+
+### 6c. AI 结构图
 
 ```bash
 python image_gen.py "prompt" --backend openai --model gpt-image-2 --aspect_ratio 16:9 -o images/ -f PXX
@@ -155,54 +168,44 @@ python image_gen.py "prompt" --backend openai --model gpt-image-2 --aspect_ratio
 
 ### 6d. 手绘 SVG 结构图（方案 B）
 
-AI API 限流或 key 失效时的备选。直接写 SVG（四象限/时间轴/流程图/齿轮图），嵌入 PPTX 与实景图同样有效，且无 API 依赖。
+AI API 限流时的备选。直接写 SVG（四象限/时间轴/流程图/齿轮图），视觉同效且无 API 依赖。
 
 ### 6e. 数据图表
 
-matplotlib 从 Excel 生成 PNG（dpi=180）。
-4. **数据图表**：matplotlib 从 Excel 生成 PNG（dpi=180）
-4. matplotlib：从 Excel 生成 PNG（dpi=180）
+```bash
+python -c "
+import matplotlib.pyplot as plt
+# ... 从 Excel 读取数据 ...
+plt.savefig('images/PXX_chart.png', dpi=180, bbox_inches='tight')
+"
+```
 
 ---
 
-## Agent 7：组装定稿（关卡 4）
+## Agent 7：组装定稿 + 完成确认（关卡 4）
 
-**执行者**：python-pptx + ppt-master
-**输入**：初稿 PPTX + Agent 6b 验证通过的配图文件
+**执行者**：python-pptx
+**输入**：Agent 4 初稿 PPTX + Agent 6 验证通过的配图文件
 
 ### 7a. 生成 PPTX
 ```bash
+cd ppt-master/
 python skills/ppt-master/scripts/finalize_svg.py <project>
 python skills/ppt-master/scripts/svg_to_pptx.py <project>
 ```
 
 ### 7b. 嵌入图片
-用 python-pptx 的 `slide.shapes.add_picture()`。全幅背景：`(0, 0, 13.33)` 英寸；侧栏：`(7.5, 1.5, 5.5)` 或 `(0.5, 1.5, 5.5)` 英寸。
+用 python-pptx 的 `slide.shapes.add_picture()` 嵌入，填入 Agent 3 预留的位置：
+
+- **全幅背景页**：`add_picture(0, 0, Inches(13.33))` + 调整图片置于底层
+- **侧栏插图页**：读虚线占位框坐标 → `add_picture(x, y, Inches(w/72), Inches(h/72))`
+- **数据图表页**：同上替换
 
 ### 7c. 完成确认（强制）
 **Agent 7 完成后必须输出以下三条**：
 1. **文件路径**：终稿 PPTX 的完整绝对路径
 2. **配图验证清单**：每页配图来源 + 视觉验证结果（✅/❌）
 3. **完成消息**：明确告诉用户"已完成"
-
-### 关键陷阱
-- **不要**用 `read_file` + `write_file` 编辑 SVG——`read_file` 输出带行号前缀 `     1|`，写回会损坏 XML（`xml.etree.ParseError: line 1, column 5`）。用 Python `open()` 直接读写
-- **不要**在 SVG 中嵌入 `<image>` 标签——ppt-master 的 XML 解析器不支持
-- **不要**给无关页面配图——用户明确抱怨图文不匹配时，宁可留白
-2. 用 `python-pptx` 的 `slide.shapes.add_picture()` 逐页嵌入图片
-3. 全幅背景：`Inches(0), Inches(0), Inches(13.33)` 
-4. 侧栏配图：`Inches(7.5), Inches(1.5), Inches(5.5)` 或 `Inches(0.5), Inches(1.5), Inches(5.5)`
-5. 嵌入前 `file` 验证图片是有效 JPEG
-**关卡**：⚠️ 用户最终确认
-
-**⚠️ 不要**在 SVG 中嵌入 `<image>` 标签——ppt-master 的 XML 解析器报 `syntax error: line 1, column 5`。图片必须在 PPTX 层面嵌入。同样不要用 `read_file` + `write_file` 编辑 SVG——`read_file` 输出含行号前缀 `     1|`，写回会损坏 XML。用 Python `open()` 直接读写。
-2. 用 `python-pptx` 的 `slide.shapes.add_picture()` 逐页嵌入图片
-3. 全幅背景图：`(0, 0, 13.33)` 英寸覆盖整页
-4. 侧栏配图：`(7.5, 1.5, 5.5)` 或 `(0.5, 1.5, 5.5)` 英寸
-5. 校验：图片文件先 `file` 确认是 JPEG 再嵌入
-**关卡**：⚠️ 用户最终确认
-
-**注意**：不要尝试在 SVG 中嵌入 `<image>` 标签——ppt-master 的 XML 解析器会报 `syntax error: line 1, column 5`。图片必须在 PPTX 层面嵌入。
 
 ---
 
@@ -211,44 +214,31 @@ python skills/ppt-master/scripts/svg_to_pptx.py <project>
 | 约束 | 说明 |
 |------|------|
 | 文案 | 严格从原文提取，不增不减 |
-| 标题 | 每个一二标题必须对应PPT页面 |
+| 标题 | 每个一二标题必须对应 PPT 页面 |
 | 卡片递进 | 上页卡片要点 = 下页概括总起 |
-| 封面底图 | 必须搜索真实照片，禁止AI生成 |
-| 搜图 | 关键词必须带"重庆" |
-| 关卡 | 用户确认不可跳过（Agent 2 → 2.5 → 5 → 7） |
-| 图文匹配 | 只给内容相关的页配图，不对应的宁可留白 |
+| 配图 | 只给内容相关的页配图，不对应的宁可留白 |
+| 封面底图 | 必须搜索真实照片，禁止 AI 生成 |
+| 关卡 | 四个用户确认点不可跳过 |
+
+---
 
 ## 已知陷阱
 
 | 陷阱 | 现象 | 对策 |
 |------|------|------|
-| `browser_navigate` + 中文URL | `'utf-8' codec can't decode byte 0xb2` | 用 `curl -x proxy` 下载；中文搜索用 DuckDuckGo Python 包 |
-| Unsplash URL 图不对题 | 视觉验证出故宫/西班牙/新加坡而非重庆 | 不用 Unsplash 直链；用 DuckDuckGo 搜 + 视觉模型逐张验证 |
-| SVG 中嵌入 `<image>` | `xml.etree.ParseError line 1, column 5` | 图片在 PPTX 层用 python-pptx 嵌入，不动 SVG |
-| `read_file`→`write_file` 编辑 SVG | XML 损坏（行号前缀 `     1|` 污染） | 用 Python `open()` 直接读写文件 |
-| AI 生图并行调用 | 429 rate limit | 必须串行调用 `image_gen.py` |
-| 图片嵌入报 PIL 错误 | `UnidentifiedImageError` | `file *.jpg` 验证是 JPEG；损坏文件换有效源 |
+| `browser_navigate` + 中文 URL | `'utf-8' codec can't decode byte 0xb2` | 用 `curl -x proxy` 下载；中文搜索用 DuckDuckGo |
+| Unsplash URL 图不对题 | 视觉验证出故宫/西班牙/新加坡而非重庆 | 视觉模型逐张验证后再用；不可跳过 |
+| `read_file`→`write_file` 编辑 SVG | XML 损坏（行号前缀污染） | 用 Python `open()` 直接读写文件 |
+| AI 生图并行调用 | 429 rate limit | 必须串行调用 |
+| 图片嵌入报 PIL 错误 | `UnidentifiedImageError` | `file *.jpg` 验证；损坏文件换有效源 |
 | API key 截断/失效 | 401 无效令牌 | 用 `memory replace` 更新完整 key |
-| 图文内容不匹配 | 用户指出图文无关 | 只配内容相关的图；不相关的页宁可无图
-
-## 已知陷阱
-
-| 陷阱 | 现象 | 对策 |
-|------|------|------|
-| browser_navigate + 中文URL | `'utf-8' codec can't decode byte` | 放弃浏览器，改用 `curl -x proxy` 下载 |
-| Unsplash URL 返回404 | `file` 命令显示 `HTML document` | 下载后立即 `file *.jpg` 验证，损坏的换备选URL |
-| SVG 中嵌入 `<image>` 标签 | `xml.etree.ParseError: syntax error: line 1, column 5` | 不要改 SVG；在 PPTX 层面用 python-pptx 嵌入图片 |
-| AI 生图并行调用 | Rate limit 429 | 串行调用 `image_gen.py`，一个接一个 |
-| API key 截断 | memory 中 key 不完整 | 用户提供完整 key 后立即用 `memory replace` 更新 |
-| ppt-master finalize_svg 不匹配图片 | 输出 `No images` | 使用 `python-pptx` 的 `add_picture()` 替代自动对齐 |
 
 ---
 
 ## 依赖
 
 - **ppt-master**：`git clone https://github.com/hugohe3/ppt-master.git`（需单独克隆）
-- **Node.js**：pptxgenjs, playwright, sharp
-- **Python**：python-pptx, matplotlib, pymupdf
+- **Python**：python-pptx, matplotlib, pymupdf, duckduckgo-search
 - **API**：api.apiyi.com/v1（图片生成）, 高德地图（可选）
 
 ## 模板制作
